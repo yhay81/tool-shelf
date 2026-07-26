@@ -56,6 +56,7 @@ $OutboundUsers = [int]$Row.outbound_users
         fedi_route = [int]$Row.fedi_route
         peta_sheet = [int]$Row.peta_sheet
         kuru_list = [int]$Row.kuru_list
+        kata_prompt = [int]$Row.kata_prompt
     }
     rates = [ordered]@{
         outbound_percent = Get-Percent $OutboundUsers $Users
