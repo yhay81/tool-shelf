@@ -36,6 +36,17 @@ const tools = [
     url: "https://profile-palette.yusuke8h.workers.dev",
   },
   {
+    categories: "create organize",
+    description: "ExcelやCSVの行を、A4ラベル用紙へ実寸で並べて印刷する。",
+    facts: ["登録不要", "文字は端末内だけに保存"],
+    image: "https://peta-sheet.yusuke8h.workers.dev/og.png",
+    imageAlt: "Peta SheetでA4ラベル用紙へ文字を配置する画面",
+    name: "Peta Sheet",
+    slug: "peta-sheet",
+    tag: "ラベルを印刷",
+    url: "https://peta-sheet.yusuke8h.workers.dev",
+  },
+  {
     categories: "find organize",
     description: "AND、OR、完全一致、除外を組み合わせてInstagram向け検索式を作る。",
     facts: ["登録不要", "条件を端末へ保存"],
@@ -86,7 +97,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">7 TOOLS</p>
+          <p class="eyebrow">8 TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -124,7 +135,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            7件
+            8件
           </output>
         </div>
 

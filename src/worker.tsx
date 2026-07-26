@@ -14,6 +14,7 @@ const toolNames = new Set([
   "album-relay",
   "creator-inbox",
   "profile-palette",
+  "peta-sheet",
   "tag-loom",
   "date-quilt",
   "mimi-deck",
