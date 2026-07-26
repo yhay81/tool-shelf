@@ -10,5 +10,8 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'profile-palette' THEN session_id END) AS profile_palette,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'tag-loom' THEN session_id END) AS tag_loom,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'date-quilt' THEN session_id END) AS date_quilt,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'mimi-deck' THEN session_id END) AS mimi_deck
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'mimi-deck' THEN session_id END) AS mimi_deck,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'fedi-route' THEN session_id END) AS fedi_route,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'peta-sheet' THEN session_id END) AS peta_sheet,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'kuru-list' THEN session_id END) AS kuru_list
 FROM product_events;
