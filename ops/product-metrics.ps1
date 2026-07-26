@@ -53,6 +53,9 @@ $OutboundUsers = [int]$Row.outbound_users
         tag_loom = [int]$Row.tag_loom
         date_quilt = [int]$Row.date_quilt
         mimi_deck = [int]$Row.mimi_deck
+        fedi_route = [int]$Row.fedi_route
+        peta_sheet = [int]$Row.peta_sheet
+        kuru_list = [int]$Row.kuru_list
     }
     rates = [ordered]@{
         outbound_percent = Get-Percent $OutboundUsers $Users
