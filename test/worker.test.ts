@@ -43,8 +43,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="mimi-deck"');
     expect(html).toContain('data-tool="fedi-route"');
     expect(html).toContain('data-tool="peta-sheet"');
-    expect(html).toContain("8 TOOLS");
-    expect(html).toContain("8件");
+    expect(html).toContain('data-tool="kuru-list"');
+    expect(html).toContain("9 TOOLS");
+    expect(html).toContain("9件");
     expect(html).toContain("Profile Palette");
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');

@@ -90,6 +90,17 @@ const tools = [
     tag: "日程を決める",
     url: "https://date-quilt.yusuke8h.workers.dev",
   },
+  {
+    categories: "plan share organize",
+    description: "決まったイベントを告知し、○△×の参加表明を集めて、当日の名簿にする。",
+    facts: ["登録不要", "名簿を印刷・CSV"],
+    image: "https://kuru-list.yusuke8h.workers.dev/og.png",
+    imageAlt: "Kuru Listでイベントの参加状況と名簿を管理する画面",
+    name: "Kuru List",
+    slug: "kuru-list",
+    tag: "参加を集める",
+    url: "https://kuru-list.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
@@ -97,7 +108,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">8 TOOLS</p>
+          <p class="eyebrow">9 TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -135,7 +146,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            8件
+            9件
           </output>
         </div>
 
