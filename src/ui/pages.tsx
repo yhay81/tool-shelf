@@ -112,6 +112,17 @@ const tools = [
     tag: "プロンプトを作る",
     url: "https://kata-prompt.yusuke8h.workers.dev",
   },
+  {
+    categories: "plan organize",
+    description: "勤務先を色分けし、シフトと勤務時間、給与の見込みを月間カレンダーでまとめる。",
+    facts: ["登録不要", "予定と金額は端末内だけ"],
+    image: "https://hataraku-tile.yusuke8h.workers.dev/og.png",
+    imageAlt: "Hataraku Tileで勤務先、月間カレンダー、シフト入力を並べる画面",
+    name: "Hataraku Tile",
+    slug: "hataraku-tile",
+    tag: "シフトを見積もる",
+    url: "https://hataraku-tile.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
@@ -119,7 +130,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">10 TOOLS</p>
+          <p class="eyebrow">11 TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -157,7 +168,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            10件
+            11件
           </output>
         </div>
 
