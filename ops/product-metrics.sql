@@ -15,5 +15,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'peta-sheet' THEN session_id END) AS peta_sheet,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'kuru-list' THEN session_id END) AS kuru_list,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'kata-prompt' THEN session_id END) AS kata_prompt,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'hataraku-tile' THEN session_id END) AS hataraku_tile
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'hataraku-tile' THEN session_id END) AS hataraku_tile,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'algo-lane' THEN session_id END) AS algo_lane
 FROM product_events;
