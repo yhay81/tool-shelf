@@ -45,8 +45,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="peta-sheet"');
     expect(html).toContain('data-tool="kuru-list"');
     expect(html).toContain('data-tool="kata-prompt"');
-    expect(html).toContain("10 TOOLS");
-    expect(html).toContain("10件");
+    expect(html).toContain('data-tool="hataraku-tile"');
+    expect(html).toContain("11 TOOLS");
+    expect(html).toContain("11件");
     expect(html).toContain("Profile Palette");
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
