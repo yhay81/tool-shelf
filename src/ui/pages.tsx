@@ -58,6 +58,17 @@ const tools = [
     url: "https://mimi-deck.yusuke8h.workers.dev",
   },
   {
+    categories: "find organize",
+    description: "目的、ソフトウェア、現在の登録可否から日本語圏のFediverseサーバーを比べる。",
+    facts: ["登録不要", "最大3件を端末で比較"],
+    image: "https://fedi-route.yusuke8h.workers.dev/og.png",
+    imageAlt: "Fedi Routeで目的と登録状況からサーバーを比較する画面",
+    name: "Fedi Route",
+    slug: "fedi-route",
+    tag: "居場所を比べる",
+    url: "https://fedi-route.yusuke8h.workers.dev",
+  },
+  {
     categories: "plan share",
     description: "候補日時を並べ、みんなの○△×を集めて、ひとつの日程に決める。",
     facts: ["登録不要", "確定日時をカレンダーへ"],
@@ -75,7 +86,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">6 TOOLS</p>
+          <p class="eyebrow">7 TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -113,7 +124,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            6件
+            7件
           </output>
         </div>
 

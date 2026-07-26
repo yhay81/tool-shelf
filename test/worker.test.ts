@@ -41,6 +41,7 @@ describe("worker", () => {
     expect(html).toContain('data-tool="album-relay"');
     expect(html).toContain('data-tool="date-quilt"');
     expect(html).toContain('data-tool="mimi-deck"');
+    expect(html).toContain('data-tool="fedi-route"');
     expect(html).toContain("Profile Palette");
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');

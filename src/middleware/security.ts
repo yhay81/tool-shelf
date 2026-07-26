@@ -7,7 +7,7 @@ const csp = [
   "font-src 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  "img-src 'self' data: https://album-relay.yusuke8h.workers.dev https://creator-inbox.yusuke8h.workers.dev https://profile-palette.yusuke8h.workers.dev https://tag-loom.yusuke8h.workers.dev https://date-quilt.yusuke8h.workers.dev https://mimi-deck.yusuke8h.workers.dev",
+  "img-src 'self' data: https://album-relay.yusuke8h.workers.dev https://creator-inbox.yusuke8h.workers.dev https://profile-palette.yusuke8h.workers.dev https://tag-loom.yusuke8h.workers.dev https://date-quilt.yusuke8h.workers.dev https://mimi-deck.yusuke8h.workers.dev https://fedi-route.yusuke8h.workers.dev",
   "object-src 'none'",
   "script-src 'self'",
   "style-src 'self'",
