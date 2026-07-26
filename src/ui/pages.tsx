@@ -47,6 +47,17 @@ const tools = [
     url: "https://tag-loom.yusuke8h.workers.dev",
   },
   {
+    categories: "find organize",
+    description: "気になるテーマから日本語ポッドキャストの回を探し、今度聴くカードを残す。",
+    facts: ["登録不要", "カードを端末へ保存"],
+    image: "https://mimi-deck.yusuke8h.workers.dev/og.png",
+    imageAlt: "Mimi Deckでテーマ検索したエピソードと今度聴くカード",
+    name: "Mimi Deck",
+    slug: "mimi-deck",
+    tag: "聴く回を探す",
+    url: "https://mimi-deck.yusuke8h.workers.dev",
+  },
+  {
     categories: "plan share",
     description: "候補日時を並べ、みんなの○△×を集めて、ひとつの日程に決める。",
     facts: ["登録不要", "確定日時をカレンダーへ"],
@@ -64,7 +75,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">5 TOOLS</p>
+          <p class="eyebrow">6 TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -102,7 +113,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            5件
+            6件
           </output>
         </div>
 

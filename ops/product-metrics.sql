@@ -9,5 +9,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'creator-inbox' THEN session_id END) AS creator_inbox,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'profile-palette' THEN session_id END) AS profile_palette,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'tag-loom' THEN session_id END) AS tag_loom,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'date-quilt' THEN session_id END) AS date_quilt
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'date-quilt' THEN session_id END) AS date_quilt,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'mimi-deck' THEN session_id END) AS mimi_deck
 FROM product_events;
