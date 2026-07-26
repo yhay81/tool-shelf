@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 
 engine: copilot
+model: auto
 
 permissions:
   contents: read
