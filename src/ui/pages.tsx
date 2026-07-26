@@ -123,6 +123,17 @@ const tools = [
     tag: "シフトを見積もる",
     url: "https://hataraku-tile.yusuke8h.workers.dev",
   },
+  {
+    categories: "find organize",
+    description: "難易度と分野から、次に解くAtCoderの5問を一本の練習レーンへ並べる。",
+    facts: ["登録不要", "進捗は端末内だけ"],
+    image: "https://algo-lane.yusuke8h.workers.dev/og.png",
+    imageAlt: "Algo Laneで難易度色の5問を一本の練習レーンへ並べる画面",
+    name: "Algo Lane",
+    slug: "algo-lane",
+    tag: "次の5問を選ぶ",
+    url: "https://algo-lane.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
@@ -130,7 +141,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">11 TOOLS</p>
+          <p class="eyebrow">12 TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -168,7 +179,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            11件
+            12件
           </output>
         </div>
 
