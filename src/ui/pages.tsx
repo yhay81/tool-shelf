@@ -101,6 +101,17 @@ const tools = [
     tag: "参加を集める",
     url: "https://kuru-list.yusuke8h.workers.dev",
   },
+  {
+    categories: "create organize",
+    description: "用途に合う型へ材料を入れ、AIへ渡せる日本語の完成文を組み立てる。",
+    facts: ["登録不要", "本文は端末内だけ"],
+    image: "https://kata-prompt.yusuke8h.workers.dev/og.png",
+    imageAlt: "Kata Promptで型、入力欄、完成したプロンプトを並べる画面",
+    name: "Kata Prompt",
+    slug: "kata-prompt",
+    tag: "プロンプトを作る",
+    url: "https://kata-prompt.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
@@ -108,7 +119,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">9 TOOLS</p>
+          <p class="eyebrow">10 TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -146,7 +157,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            9件
+            10件
           </output>
         </div>
 
