@@ -59,6 +59,7 @@ $OutboundUsers = [int]$Row.outbound_users
         kata_prompt = [int]$Row.kata_prompt
         hataraku_tile = [int]$Row.hataraku_tile
         algo_lane = [int]$Row.algo_lane
+        mingle_frame = [int]$Row.mingle_frame
     }
     rates = [ordered]@{
         outbound_percent = Get-Percent $OutboundUsers $Users

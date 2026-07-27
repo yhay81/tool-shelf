@@ -47,9 +47,14 @@ describe("worker", () => {
     expect(html).toContain('data-tool="kata-prompt"');
     expect(html).toContain('data-tool="hataraku-tile"');
     expect(html).toContain('data-tool="algo-lane"');
-    expect(html).toContain("12 TOOLS");
-    expect(html).toContain("12件");
+    expect(html).toContain('data-tool="mingle-frame"');
+    expect(html).toContain("13 TOOLS");
+    expect(html).toContain("13件");
     expect(html).toContain("Profile Palette");
+    expect(html).toContain("Mingle Frame");
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://mingle-frame.yusuke8h.workers.dev",
+    );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
@@ -89,6 +94,29 @@ describe("worker", () => {
       expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
     );
     expect(batch).toHaveBeenCalledOnce();
+  });
+
+  it("accepts Mingle Frame as an allowlisted tool", async () => {
+    const response = await app.request(
+      "/api/events",
+      {
+        body: JSON.stringify({ ...eventPayload, tool: "mingle-frame" }),
+        headers: {
+          "content-type": "application/json",
+          "sec-fetch-site": "same-origin",
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(204);
+    expect(bind).toHaveBeenCalledWith(
+      eventPayload.sessionId,
+      eventPayload.name,
+      "mingle-frame",
+      expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+    );
   });
 
   it.each([
