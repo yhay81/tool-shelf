@@ -26,6 +26,7 @@ const toolNames = new Set([
   "mingle-frame",
   "sky-dial",
   "tango-orbit",
+  "ava-rack",
 ]);
 const sessionIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 

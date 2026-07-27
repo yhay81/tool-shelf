@@ -62,6 +62,7 @@ $OutboundUsers = [int]$Row.outbound_users
         mingle_frame = [int]$Row.mingle_frame
         sky_dial = [int]$Row.sky_dial
         tango_orbit = [int]$Row.tango_orbit
+        ava_rack = [int]$Row.ava_rack
     }
     rates = [ordered]@{
         outbound_percent = Get-Percent $OutboundUsers $Users

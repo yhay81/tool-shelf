@@ -167,6 +167,17 @@ const tools = [
     tag: "単語を引いて残す",
     url: "https://tango-orbit.yusuke8h.workers.dev",
   },
+  {
+    categories: "find organize",
+    description: "所持アバター名から、衣装・髪型・小物のBOOTH検索経路を組み立てる。",
+    facts: ["登録不要", "アバター名は端末内"],
+    image: "https://ava-rack.yusuke8h.workers.dev/og.png",
+    imageAlt: "Ava Rackのアバターラック、着せ替え棚、検索チケットが並ぶ画面",
+    name: "Ava Rack",
+    slug: "ava-rack",
+    tag: "対応アイテムを探す",
+    url: "https://ava-rack.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
