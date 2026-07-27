@@ -145,6 +145,17 @@ const tools = [
     tag: "自己紹介を一枚へ",
     url: "https://mingle-frame.yusuke8h.workers.dev",
   },
+  {
+    categories: "find organize",
+    description: "目的と検索語から、日本語のBlueskyカスタムフィードを3件へ絞る。",
+    facts: ["登録不要", "検索語は保存しない"],
+    image: "https://sky-dial.yusuke8h.workers.dev/og.png",
+    imageAlt: "Sky Dialのダイヤルから3件のフィード候補と保存トレイへつながる画面",
+    name: "Sky Dial",
+    slug: "sky-dial",
+    tag: "フィードを3つへ",
+    url: "https://sky-dial.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
