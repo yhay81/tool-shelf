@@ -18,5 +18,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'hataraku-tile' THEN session_id END) AS hataraku_tile,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'algo-lane' THEN session_id END) AS algo_lane,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'mingle-frame' THEN session_id END) AS mingle_frame,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'sky-dial' THEN session_id END) AS sky_dial
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'sky-dial' THEN session_id END) AS sky_dial,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'tango-orbit' THEN session_id END) AS tango_orbit
 FROM product_events;
