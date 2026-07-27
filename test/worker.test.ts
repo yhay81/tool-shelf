@@ -51,13 +51,15 @@ describe("worker", () => {
     expect(html).toContain('data-tool="sky-dial"');
     expect(html).toContain('data-tool="tango-orbit"');
     expect(html).toContain('data-tool="ava-rack"');
-    expect(html).toContain("16 TOOLS");
-    expect(html).toContain("16件");
+    expect(html).toContain('data-tool="chair-call"');
+    expect(html).toContain("17 TOOLS");
+    expect(html).toContain("17件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
     expect(html).toContain("Tango Orbit");
     expect(html).toContain("Ava Rack");
+    expect(html).toContain("Chair Call");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -69,6 +71,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://ava-rack.yusuke8h.workers.dev",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://chair-call.yusuke8h.workers.dev",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -199,6 +204,29 @@ describe("worker", () => {
       eventPayload.sessionId,
       eventPayload.name,
       "ava-rack",
+      expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+    );
+  });
+
+  it("accepts Chair Call as an allowlisted tool", async () => {
+    const response = await app.request(
+      "/api/events",
+      {
+        body: JSON.stringify({ ...eventPayload, tool: "chair-call" }),
+        headers: {
+          "content-type": "application/json",
+          "sec-fetch-site": "same-origin",
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(204);
+    expect(bind).toHaveBeenCalledWith(
+      eventPayload.sessionId,
+      eventPayload.name,
+      "chair-call",
       expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
     );
   });

@@ -178,6 +178,17 @@ const tools = [
     tag: "対応アイテムを探す",
     url: "https://ava-rack.yusuke8h.workers.dev",
   },
+  {
+    categories: "plan share",
+    description: "施術条件と候補日時を一枚の美容モデル募集カードにし、応募文から外部連絡へつなぐ。",
+    facts: ["応募者情報は保存しない", "募集は14日で終了"],
+    image: "https://chair-call.yusuke8h.workers.dev/og.png",
+    imageAlt: "Chair Callのサロン椅子、施術道具、候補日時つき募集カードが並ぶ画面",
+    name: "Chair Call",
+    slug: "chair-call",
+    tag: "練習モデルを募る",
+    url: "https://chair-call.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
