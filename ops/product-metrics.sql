@@ -20,5 +20,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'mingle-frame' THEN session_id END) AS mingle_frame,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'sky-dial' THEN session_id END) AS sky_dial,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'tango-orbit' THEN session_id END) AS tango_orbit,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'ava-rack' THEN session_id END) AS ava_rack
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'ava-rack' THEN session_id END) AS ava_rack,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'chair-call' THEN session_id END) AS chair_call
 FROM product_events;
