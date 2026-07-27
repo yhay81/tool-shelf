@@ -134,6 +134,17 @@ const tools = [
     tag: "次の5問を選ぶ",
     url: "https://algo-lane.yusuke8h.workers.dev",
   },
+  {
+    categories: "create share",
+    description: "画像、好きなこと、活動時間、関わり方を、一枚の自己紹介カードへ整える。",
+    facts: ["登録不要", "画像は端末内だけ"],
+    image: "https://mingle-frame.yusuke8h.workers.dev/og.png",
+    imageAlt: "Mingle Frameで写真、タグ、活動時間を一枚の自己紹介カードへ整える画面",
+    name: "Mingle Frame",
+    slug: "mingle-frame",
+    tag: "自己紹介を一枚へ",
+    url: "https://mingle-frame.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
@@ -141,7 +152,7 @@ export function HomePage() {
     <Layout>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
-          <p class="eyebrow">12 TOOLS</p>
+          <p class="eyebrow">{tools.length} TOOLS</p>
           <div class="shelf-title">
             <h1>何をしますか？</h1>
             <p>画面と用途を見比べて、そのまま使えます。</p>
@@ -179,7 +190,7 @@ export function HomePage() {
             </button>
           </div>
           <output aria-live="polite" id="tool-count">
-            12件
+            {tools.length}件
           </output>
         </div>
 
