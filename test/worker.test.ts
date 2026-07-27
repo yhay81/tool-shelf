@@ -48,12 +48,17 @@ describe("worker", () => {
     expect(html).toContain('data-tool="hataraku-tile"');
     expect(html).toContain('data-tool="algo-lane"');
     expect(html).toContain('data-tool="mingle-frame"');
-    expect(html).toContain("13 TOOLS");
-    expect(html).toContain("13件");
+    expect(html).toContain('data-tool="sky-dial"');
+    expect(html).toContain("14 TOOLS");
+    expect(html).toContain("14件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
+    expect(html).toContain("Sky Dial");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://sky-dial.yusuke8h.workers.dev",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -115,6 +120,29 @@ describe("worker", () => {
       eventPayload.sessionId,
       eventPayload.name,
       "mingle-frame",
+      expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+    );
+  });
+
+  it("accepts Sky Dial as an allowlisted tool", async () => {
+    const response = await app.request(
+      "/api/events",
+      {
+        body: JSON.stringify({ ...eventPayload, tool: "sky-dial" }),
+        headers: {
+          "content-type": "application/json",
+          "sec-fetch-site": "same-origin",
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(204);
+    expect(bind).toHaveBeenCalledWith(
+      eventPayload.sessionId,
+      eventPayload.name,
+      "sky-dial",
       expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
     );
   });
