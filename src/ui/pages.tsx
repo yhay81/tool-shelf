@@ -156,6 +156,17 @@ const tools = [
     tag: "フィードを3つへ",
     url: "https://sky-dial.yusuke8h.workers.dev",
   },
+  {
+    categories: "find organize",
+    description: "日本語・英語を端末内で検索し、関連語をたどって保存・復習する。",
+    facts: ["登録不要", "検索語・単語帳は端末内"],
+    image: "https://tango-orbit.yusuke8h.workers.dev/og.png",
+    imageAlt: "Tango Orbitの検索候補、関連語の軌道、保存した単語が並ぶ画面",
+    name: "Tango Orbit",
+    slug: "tango-orbit",
+    tag: "単語を引いて残す",
+    url: "https://tango-orbit.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
