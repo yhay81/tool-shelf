@@ -189,6 +189,18 @@ const tools = [
     tag: "練習モデルを募る",
     url: "https://chair-call.yusuke8h.workers.dev",
   },
+  {
+    categories: "find plan share",
+    description:
+      "オンラインTRPGの条件、空席、候補日時を一枚の卓札にし、応募文から外部連絡へつなぐ。",
+    facts: ["参加者情報は保存しない", "募集は14日で終了"],
+    image: "https://dice-seat.yusuke8h.workers.dev/og.png",
+    imageAlt: "Dice Seatの円卓、ダイス、空席、候補日時の卓札が並ぶ画面",
+    name: "Dice Seat",
+    slug: "dice-seat",
+    tag: "オンライン卓を募る",
+    url: "https://dice-seat.yusuke8h.workers.dev",
+  },
 ] as const;
 
 export function HomePage() {
