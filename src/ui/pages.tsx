@@ -212,6 +212,17 @@ const tools = [
     tag: "ことばを花束へ",
     url: "https://yose-bloom.yhay81.com",
   },
+  {
+    categories: "find share",
+    description: "大人向けの手動ハート交換オープンチャットを、ノルマや時間帯から見比べる。",
+    facts: ["個人連絡先は掲載不可", "募集は14日で終了"],
+    image: "https://heart-board.yhay81.com/og.png",
+    imageAlt: "Heart Boardのコルク掲示板にハート数、時間、年齢、参加条件の募集カードが並ぶ",
+    name: "Heart Board",
+    slug: "heart-board",
+    tag: "交換グループを探す",
+    url: "https://heart-board.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
