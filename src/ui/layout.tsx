@@ -35,7 +35,7 @@ export function Layout({
         <meta content="summary_large_image" name="twitter:card" />
         <link href={product.url} rel="canonical" />
         <link href="/styles.css" rel="stylesheet" />
-        <script defer src="/shelf.js"></script>
+        <script defer src="/shelf.js?v=20260729-qa-exclusion"></script>
         <title>{title}</title>
       </head>
       <body>
