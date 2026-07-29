@@ -392,6 +392,18 @@ export const tools = [
     tag: "回覧を灯りでひと回り",
     url: "https://kairan-to.yhay81.com",
   },
+  {
+    categories: "create organize",
+    description:
+      "Ameba Owndの公開トップページを読み解き、構成図と静的HTMLの下書きを端末へ持ち出す。",
+    facts: ["登録不要", "入力URL・結果を保存しない"],
+    image: "https://site-hodoki.yhay81.com/og.svg",
+    imageAlt: "古いWebページから糸をほどき、持ち出せるページ設計へ並べ直すサイトほどきの画面",
+    name: "サイトほどき",
+    slug: "site-hodoki",
+    tag: "サイトの骨組みを持ち出す",
+    url: "https://site-hodoki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
