@@ -62,8 +62,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="uchigraph"');
     expect(html).toContain('data-tool="tsumi-erabi"');
     expect(html).toContain('data-tool="ipass-map"');
-    expect(html).toContain("27 TOOLS");
-    expect(html).toContain("27件");
+    expect(html).toContain('data-tool="takufuda"');
+    expect(html).toContain("28 TOOLS");
+    expect(html).toContain("28件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -122,6 +123,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://ipass-map.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://takufuda.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
