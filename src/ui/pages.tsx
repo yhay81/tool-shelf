@@ -205,12 +205,12 @@ const tools = [
     categories: "create share",
     description: "みんなの短いメッセージを一輪ずつ集め、非公開の花束として本人へ贈る。",
     facts: ["参加者は登録不要", "花束は35日で削除"],
-    image: "https://yose-bloom.yusuke8h.workers.dev/og.png",
+    image: "https://yose-bloom.yhay81.com/og.png",
     imageAlt: "Yose Bloomで色とりどりのメッセージの花を一つの花束へ集める画面",
     name: "Yose Bloom",
     slug: "yose-bloom",
     tag: "ことばを花束へ",
-    url: "https://yose-bloom.yusuke8h.workers.dev",
+    url: "https://yose-bloom.yhay81.com",
   },
 ] as const;
 

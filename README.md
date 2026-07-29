@@ -2,7 +2,7 @@
 
 用途と実画面から、公開中の日本語Webツールを選べる道具棚です。
 
-<https://tool-shelf.yusuke8h.workers.dev>
+<https://tools.yhay81.com>
 
 ## What it does
 
@@ -31,6 +31,8 @@ npm run dev
 ```
 
 ## Release
+
+本番の正規URLは`https://tools.yhay81.com`です。旧`workers.dev` URLへのアクセスは、同じpathとqueryを保って正規URLへ恒久転送します。
 
 ```powershell
 npm run release:check

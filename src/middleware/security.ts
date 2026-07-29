@@ -7,7 +7,7 @@ const csp = [
   "font-src 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  "img-src 'self' data: https://album-relay.yusuke8h.workers.dev https://creator-inbox.yusuke8h.workers.dev https://profile-palette.yusuke8h.workers.dev https://peta-sheet.yusuke8h.workers.dev https://tag-loom.yusuke8h.workers.dev https://date-quilt.yusuke8h.workers.dev https://mimi-deck.yusuke8h.workers.dev https://fedi-route.yusuke8h.workers.dev https://kuru-list.yusuke8h.workers.dev https://kata-prompt.yusuke8h.workers.dev https://hataraku-tile.yusuke8h.workers.dev https://algo-lane.yusuke8h.workers.dev https://mingle-frame.yusuke8h.workers.dev https://sky-dial.yusuke8h.workers.dev https://tango-orbit.yusuke8h.workers.dev https://ava-rack.yusuke8h.workers.dev https://chair-call.yusuke8h.workers.dev https://dice-seat.yusuke8h.workers.dev https://yose-bloom.yusuke8h.workers.dev",
+  "img-src 'self' data: https://album-relay.yusuke8h.workers.dev https://creator-inbox.yusuke8h.workers.dev https://profile-palette.yusuke8h.workers.dev https://peta-sheet.yusuke8h.workers.dev https://tag-loom.yusuke8h.workers.dev https://date-quilt.yusuke8h.workers.dev https://mimi-deck.yusuke8h.workers.dev https://fedi-route.yusuke8h.workers.dev https://kuru-list.yusuke8h.workers.dev https://kata-prompt.yusuke8h.workers.dev https://hataraku-tile.yusuke8h.workers.dev https://algo-lane.yusuke8h.workers.dev https://mingle-frame.yusuke8h.workers.dev https://sky-dial.yusuke8h.workers.dev https://tango-orbit.yusuke8h.workers.dev https://ava-rack.yusuke8h.workers.dev https://chair-call.yusuke8h.workers.dev https://dice-seat.yusuke8h.workers.dev https://yose-bloom.yhay81.com",
   "object-src 'none'",
   "script-src 'self'",
   "style-src 'self'",

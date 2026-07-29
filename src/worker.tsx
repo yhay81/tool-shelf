@@ -32,9 +32,21 @@ const toolNames = new Set([
   "yose-bloom",
 ]);
 const sessionIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const canonicalHostname = "tools.yhay81.com";
+const legacyHostname = "tool-shelf.yusuke8h.workers.dev";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
+app.use("*", async (c, next) => {
+  const url = new URL(c.req.url);
+  if (url.hostname === legacyHostname) {
+    url.hostname = canonicalHostname;
+    url.port = "";
+    url.protocol = "https:";
+    return c.redirect(url.toString(), 308);
+  }
+  await next();
+});
 app.use("*", requestId());
 app.use("*", securityHeaders);
 
