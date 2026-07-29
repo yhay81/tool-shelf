@@ -359,6 +359,17 @@ export const tools = [
     tag: "サイトの反応を見る",
     url: "https://tegotae.yhay81.com",
   },
+  {
+    categories: "create organize share",
+    description: "配信のおたよりを登録なしで集め、選んだ一通だけをOBSのブラウザソースへ映す。",
+    facts: ["視聴者は登録不要", "受付・管理・OBS鍵を分離"],
+    image: "https://otayori-maku.yhay81.com/og.svg",
+    imageAlt: "おたより幕の受信トレイから選んだ一通がOBSの配信画面へ移る操作画面",
+    name: "おたより幕",
+    slug: "otayori-maku",
+    tag: "おたよりを配信へ",
+    url: "https://otayori-maku.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

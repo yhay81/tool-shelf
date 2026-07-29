@@ -68,8 +68,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="yorishiru"');
     expect(html).toContain('data-tool="mcp-erabi"');
     expect(html).toContain('data-tool="tegotae"');
-    expect(html).toContain("32 TOOLS");
-    expect(html).toContain("32件");
+    expect(html).toContain('data-tool="otayori-maku"');
+    expect(html).toContain("33 TOOLS");
+    expect(html).toContain("33件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -90,9 +91,11 @@ describe("worker", () => {
     expect(html).toContain("よりしる");
     expect(html).toContain("MCPえらび");
     expect(html).toContain("手ごたえ");
+    expect(html).toContain("おたより幕");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":32');
+    expect(html).toContain('"numberOfItems":33');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
+    expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -147,6 +150,9 @@ describe("worker", () => {
       "https://mcp-erabi.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain("https://tegotae.yhay81.com");
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://otayori-maku.yhay81.com",
+    );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
@@ -187,12 +193,13 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(34);
-    expect(new Set(locations)).toHaveProperty("size", 34);
+    expect(locations).toHaveLength(35);
+    expect(new Set(locations)).toHaveProperty("size", 35);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(locations).toContain("https://tools.yhay81.com/tools/mcp-erabi");
+    expect(locations).toContain("https://tools.yhay81.com/tools/otayori-maku");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
