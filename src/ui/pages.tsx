@@ -235,6 +235,17 @@ const tools = [
     tag: "今夜の会場を探す",
     url: "https://yoru-mado.yhay81.com",
   },
+  {
+    categories: "organize share",
+    description: "ダブりとほしいものを二つの箱に並べ、相手のリストと重ねて交換候補を見つける。",
+    facts: ["登録不要", "比較リストは端末内だけ"],
+    image: "https://kasane-fuda.yhay81.com/og.png",
+    imageAlt: "かさね札の赤と青の交換箱で、13と21のシールが重なって光る",
+    name: "かさね札",
+    slug: "kasane-fuda",
+    tag: "交換候補を重ねる",
+    url: "https://kasane-fuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
