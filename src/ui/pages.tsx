@@ -381,6 +381,17 @@ export const tools = [
     tag: "出欠と送迎を一枚へ",
     url: "https://noriai-hyo.yhay81.com",
   },
+  {
+    categories: "organize share",
+    description: "次の回覧一件を登録なしで共有し、読んだ世帯と行事の出欠を灯りで確かめる。",
+    facts: ["登録不要", "個別回答は役員だけ"],
+    image: "https://kairan-to.yhay81.com/og.svg",
+    imageAlt: "中央の回覧を囲む家に読了の灯りが順に点き、残り世帯を示す回覧灯の画面",
+    name: "回覧灯",
+    slug: "kairan-to",
+    tag: "回覧を灯りでひと回り",
+    url: "https://kairan-to.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
