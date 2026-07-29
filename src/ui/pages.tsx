@@ -440,6 +440,18 @@ export const tools = [
     tag: "しまった投稿を、端末の中で探す",
     url: "https://post-gura.yhay81.com",
   },
+  {
+    categories: "find plan share",
+    description:
+      "未来の一開催について、日時・場所・レベル・参加費・FP/GK残枠からフットサルの助っ人を募る。",
+    facts: ["登録・連絡先不要", "採用者だけに参加案内"],
+    image: "https://suketto-court.yhay81.com/og.svg",
+    imageAlt: "フットサルコートのFPとGK残枠へ二人の助っ人が入る助っ人コート",
+    name: "助っ人コート",
+    slug: "suketto-court",
+    tag: "空いたポジションに入る",
+    url: "https://suketto-court.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
