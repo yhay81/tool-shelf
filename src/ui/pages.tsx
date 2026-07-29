@@ -428,6 +428,18 @@ export const tools = [
     tag: "思い出の断片を、あの一冊へ",
     url: "https://ano-hon-fuda.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "Xの公式アーカイブZIPを端末内だけで開き、過去の投稿を語句、日付、種類から探して書き出す。",
+    facts: ["登録不要", "アーカイブを送信しない"],
+    image: "https://post-gura.yhay81.com/og.svg",
+    imageAlt: "封をしたアーカイブ箱から年別の引き出しを通り、検索結果の札が現れるポスト蔵",
+    name: "ポスト蔵",
+    slug: "post-gura",
+    tag: "しまった投稿を、端末の中で探す",
+    url: "https://post-gura.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
