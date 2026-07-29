@@ -74,8 +74,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="site-hodoki"');
     expect(html).toContain('data-tool="pon-hakushu"');
     expect(html).toContain('data-tool="ano-hon-fuda"');
-    expect(html).toContain("38 TOOLS");
-    expect(html).toContain("38件");
+    expect(html).toContain('data-tool="post-gura"');
+    expect(html).toContain("39 TOOLS");
+    expect(html).toContain("39件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -102,8 +103,9 @@ describe("worker", () => {
     expect(html).toContain("サイトほどき");
     expect(html).toContain("ぽん拍手");
     expect(html).toContain("あの本札");
+    expect(html).toContain("ポスト蔵");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":38');
+    expect(html).toContain('"numberOfItems":39');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -111,6 +113,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/site-hodoki");
     expect(html).toContain("https://tools.yhay81.com/tools/pon-hakushu");
     expect(html).toContain("https://tools.yhay81.com/tools/ano-hon-fuda");
+    expect(html).toContain("https://tools.yhay81.com/tools/post-gura");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -182,6 +185,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://ano-hon-fuda.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://post-gura.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -275,6 +281,26 @@ describe("worker", () => {
     expect(html).toContain("公開一覧・画像投稿なし");
   });
 
+  it("publishes the ポスト蔵 detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/post-gura",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>しまった投稿を、端末の中で探す | ポスト蔵 | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/post-gura" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://post-gura.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://post-gura.yhay81.com"');
+    expect(html).toContain("アーカイブを送信しない");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -283,8 +309,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(40);
-    expect(new Set(locations)).toHaveProperty("size", 40);
+    expect(locations).toHaveLength(41);
+    expect(new Set(locations)).toHaveProperty("size", 41);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -295,6 +321,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/site-hodoki");
     expect(locations).toContain("https://tools.yhay81.com/tools/pon-hakushu");
     expect(locations).toContain("https://tools.yhay81.com/tools/ano-hon-fuda");
+    expect(locations).toContain("https://tools.yhay81.com/tools/post-gura");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
