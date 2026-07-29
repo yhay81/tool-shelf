@@ -33,6 +33,7 @@ describe("worker", () => {
     const html = await response.text();
 
     expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("no-store");
     expect(response.headers.get("content-security-policy")).toContain("default-src 'self'");
     expect(html).toContain('lang="ja"');
     expect(html).toContain('itemtype="https://schema.org/WebApplication"');
@@ -155,6 +156,7 @@ describe("worker", () => {
     const html = await response.text();
 
     expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("no-store");
     expect(html).toContain("匿名セッションID");
     expect(html).toContain("検索欄に入力した言葉は保存しません");
     expect(html).toContain("35日後");

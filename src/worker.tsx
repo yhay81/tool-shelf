@@ -61,8 +61,14 @@ app.use("*", async (c, next) => {
 app.use("*", requestId());
 app.use("*", securityHeaders);
 
-app.get("/", (c) => c.html(<HomePage />));
-app.get("/privacy", (c) => c.html(<PrivacyPage />));
+app.get("/", (c) => {
+  c.header("Cache-Control", "no-store");
+  return c.html(<HomePage />);
+});
+app.get("/privacy", (c) => {
+  c.header("Cache-Control", "no-store");
+  return c.html(<PrivacyPage />);
+});
 
 app.post("/api/events", async (c) => {
   c.header("Cache-Control", "no-store");
