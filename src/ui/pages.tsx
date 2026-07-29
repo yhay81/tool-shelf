@@ -1,7 +1,7 @@
 import { product } from "../config/product";
 import { Layout } from "./layout";
 
-const tools = [
+export const tools = [
   {
     categories: "share",
     description: "撮影会や小さなイベントの写真を、QRと合い言葉でまとめて渡す。",
@@ -362,8 +362,31 @@ const tools = [
 ] as const;
 
 export function HomePage() {
+  const canonicalUrl = `${product.url}/`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: tools.map((tool, index) => ({
+      "@type": "ListItem",
+      item: {
+        "@type": "WebApplication",
+        applicationCategory: product.applicationCategory,
+        description: tool.description,
+        image: tool.image,
+        isAccessibleForFree: true,
+        name: tool.name,
+        operatingSystem: "Any",
+        url: `${product.url}/tools/${tool.slug}`,
+      },
+      position: index + 1,
+    })),
+    name: `${product.name}の日本語Webツール一覧`,
+    numberOfItems: tools.length,
+    url: canonicalUrl,
+  };
+
   return (
-    <Layout>
+    <Layout canonicalUrl={canonicalUrl} jsonLd={jsonLd}>
       <section class="shelf-shell" id="tools">
         <header class="shelf-heading">
           <p class="eyebrow">{tools.length} TOOLS</p>
@@ -447,6 +470,123 @@ export function HomePage() {
           該当する道具はまだありません。
         </p>
       </section>
+    </Layout>
+  );
+}
+
+export type Tool = (typeof tools)[number];
+
+function relatedTools(tool: Tool) {
+  const categories = new Set(tool.categories.split(" "));
+  return tools
+    .filter((candidate) => candidate.slug !== tool.slug)
+    .map((candidate) => ({
+      candidate,
+      overlap: candidate.categories.split(" ").filter((category) => categories.has(category))
+        .length,
+    }))
+    .filter(({ overlap }) => overlap > 0)
+    .sort((left, right) => right.overlap - left.overlap)
+    .slice(0, 3)
+    .map(({ candidate }) => candidate);
+}
+
+export function ToolPage({ tool }: { tool: Tool }) {
+  const canonicalUrl = `${product.url}/tools/${tool.slug}`;
+  const title = `${tool.tag} | ${tool.name} | ${product.name}`;
+  const recommendations = relatedTools(tool);
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      applicationCategory: product.applicationCategory,
+      description: tool.description,
+      image: tool.image,
+      isAccessibleForFree: true,
+      name: tool.name,
+      operatingSystem: "Any",
+      potentialAction: {
+        "@type": "UseAction",
+        target: tool.url,
+      },
+      url: tool.url,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          item: `${product.url}/`,
+          name: product.name,
+          position: 1,
+        },
+        {
+          "@type": "ListItem",
+          item: canonicalUrl,
+          name: tool.name,
+          position: 2,
+        },
+      ],
+    },
+  ];
+
+  return (
+    <Layout
+      canonicalUrl={canonicalUrl}
+      description={tool.description}
+      imageAlt={tool.imageAlt}
+      imageUrl={tool.image}
+      jsonLd={jsonLd}
+      title={title}
+    >
+      <article class="detail-shell">
+        <a class="back-link" href="/#tools">
+          <span aria-hidden="true">←</span> 道具棚へ
+        </a>
+        <div class="detail-stage">
+          <figure class="detail-preview">
+            <img alt={tool.imageAlt} height="630" src={tool.image} width="1200" />
+            <figcaption>{tool.tag}</figcaption>
+          </figure>
+          <section class="detail-panel">
+            <p class="eyebrow">WEB TOOL</p>
+            <h1>{tool.name}</h1>
+            <p class="detail-description">{tool.description}</p>
+            <ul aria-label="特徴" class="detail-facts">
+              {tool.facts.map((fact) => (
+                <li>
+                  <span aria-hidden="true">✓</span>
+                  {fact}
+                </li>
+              ))}
+            </ul>
+            <a class="launch-link" data-tool={tool.slug} href={tool.url}>
+              <span>{tool.tag}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </section>
+        </div>
+
+        <section class="related-tools" aria-labelledby="related-heading">
+          <header>
+            <p class="eyebrow">NEXT TO IT</p>
+            <h2 id="related-heading">近くの道具</h2>
+          </header>
+          <div>
+            {recommendations.map((candidate) => (
+              <a data-tool={candidate.slug} href={candidate.url}>
+                <img alt="" height="96" loading="lazy" src={candidate.image} width="160" />
+                <span>
+                  <strong>{candidate.name}</strong>
+                  <small>{candidate.tag}</small>
+                </span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      </article>
     </Layout>
   );
 }

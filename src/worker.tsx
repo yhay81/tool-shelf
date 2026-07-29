@@ -1,8 +1,9 @@
 import { Hono } from "hono";
 import { requestId } from "hono/request-id";
 
+import { product } from "./config/product";
 import { securityHeaders } from "./middleware/security";
-import { HomePage, PrivacyPage } from "./ui/pages";
+import { HomePage, PrivacyPage, ToolPage, tools } from "./ui/pages";
 
 export type Bindings = {
   ASSETS: Fetcher;
@@ -67,9 +68,40 @@ app.get("/", (c) => {
   c.header("Cache-Control", "no-store");
   return c.html(<HomePage />);
 });
+app.get("/tools/:slug", (c) => {
+  const tool = tools.find((candidate) => candidate.slug === c.req.param("slug"));
+  if (!tool) {
+    return c.json(
+      {
+        error: "not_found",
+        requestId: c.get("requestId"),
+      },
+      404,
+    );
+  }
+
+  c.header("Cache-Control", "public, max-age=300, s-maxage=86400");
+  return c.html(<ToolPage tool={tool} />);
+});
 app.get("/privacy", (c) => {
   c.header("Cache-Control", "no-store");
   return c.html(<PrivacyPage />);
+});
+app.get("/sitemap.xml", (c) => {
+  const urls = [
+    `${product.url}/`,
+    `${product.url}/privacy`,
+    ...tools.map((tool) => `${product.url}/tools/${tool.slug}`),
+  ];
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map((url) => `  <url><loc>${url}</loc></url>`).join("\n")}
+</urlset>
+`;
+
+  c.header("Cache-Control", "public, max-age=3600, s-maxage=86400");
+  c.header("Content-Type", "application/xml; charset=UTF-8");
+  return c.body(sitemap);
 });
 
 app.post("/api/events", async (c) => {

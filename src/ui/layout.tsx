@@ -3,16 +3,28 @@ import type { Child } from "hono/jsx";
 import { product } from "../config/product";
 
 type LayoutProps = {
+  canonicalUrl?: string;
   children: Child;
   description?: string;
+  imageAlt?: string;
+  imageUrl?: string;
+  jsonLd?: unknown;
   title?: string;
 };
 
 export function Layout({
+  canonicalUrl = product.url,
   children,
   description = product.description,
+  imageAlt = product.ogImageAlt,
+  imageUrl = product.ogImage,
+  jsonLd,
   title = product.name,
 }: LayoutProps) {
+  const serializedJsonLd = jsonLd
+    ? JSON.stringify(jsonLd).replaceAll("<", "\\u003c").replaceAll(">", "\\u003e")
+    : null;
+
   return (
     <html itemscope itemtype="https://schema.org/WebApplication" lang="ja">
       <head>
@@ -21,21 +33,27 @@ export function Layout({
         <meta content={description} name="description" />
         <meta content={product.name} itemProp="name" />
         <meta content={description} itemProp="description" />
-        <meta content={product.url} itemProp="url" />
+        <meta content={canonicalUrl} itemProp="url" />
         <meta content={product.applicationCategory} itemProp="applicationCategory" />
         <meta content="Any" itemProp="operatingSystem" />
         <meta content="true" itemProp="isAccessibleForFree" />
         <meta content={description} property="og:description" />
-        <meta content={product.ogImage} property="og:image" />
-        <meta content={product.ogImageAlt} property="og:image:alt" />
+        <meta content={imageUrl} property="og:image" />
+        <meta content={imageAlt} property="og:image:alt" />
         <meta content="ja_JP" property="og:locale" />
         <meta content={title} property="og:title" />
         <meta content="website" property="og:type" />
-        <meta content={product.url} property="og:url" />
+        <meta content={canonicalUrl} property="og:url" />
         <meta content="summary_large_image" name="twitter:card" />
-        <link href={product.url} rel="canonical" />
+        <link href={canonicalUrl} rel="canonical" />
         <link href="/styles.css" rel="stylesheet" />
-        <script defer src="/shelf.js?v=20260729-qa-propagation"></script>
+        {serializedJsonLd ? (
+          <script
+            dangerouslySetInnerHTML={{ __html: serializedJsonLd }}
+            type="application/ld+json"
+          />
+        ) : null}
+        <script defer src="/shelf.js?v=20260730-detail-pages"></script>
         <title>{title}</title>
       </head>
       <body>
@@ -47,7 +65,7 @@ export function Layout({
             {product.name}
           </a>
           <nav aria-label="メイン">
-            <a class="nav-cta" href="#tools">
+            <a class="nav-cta" href="/#tools">
               選ぶ
             </a>
             <a href="/privacy">プライバシー</a>

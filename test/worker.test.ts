@@ -90,6 +90,9 @@ describe("worker", () => {
     expect(html).toContain("よりしる");
     expect(html).toContain("MCPえらび");
     expect(html).toContain("手ごたえ");
+    expect(html).toContain('"@type":"ItemList"');
+    expect(html).toContain('"numberOfItems":32');
+    expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -148,6 +151,56 @@ describe("worker", () => {
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
     expect(html).not.toContain("成功条件");
+  });
+
+  it("renders a focused and indexable page for every tool", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/tegotae",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=86400");
+    expect(html).toContain("<title>サイトの反応を見る | 手ごたえ | Tool Shelf</title>");
+    expect(html).toContain('<link href="https://tools.yhay81.com/tools/tegotae" rel="canonical"/>');
+    expect(html).toContain(
+      '<meta content="https://tegotae.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('"@type":"WebApplication"');
+    expect(html).toContain('"@type":"BreadcrumbList"');
+    expect(html).toContain('class="detail-preview"');
+    expect(html).toContain('data-tool="tegotae"');
+    expect(html).toContain('href="https://tegotae.yhay81.com"');
+    expect(html).toContain("Cookie・広告なし");
+    expect(html).toContain("近くの道具");
+    expect(html).not.toContain("実験");
+    expect(html).not.toContain("成功条件");
+  });
+
+  it("publishes every focused tool page in the sitemap", async () => {
+    const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
+    const xml = await response.text();
+    const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("content-type")).toContain("application/xml");
+    expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
+    expect(locations).toHaveLength(34);
+    expect(new Set(locations)).toHaveProperty("size", 34);
+    expect(locations).toContain("https://tools.yhay81.com/");
+    expect(locations).toContain("https://tools.yhay81.com/privacy");
+    expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
+    expect(locations).toContain("https://tools.yhay81.com/tools/mcp-erabi");
+  });
+
+  it("does not turn an unknown tool slug into an indexable page", async () => {
+    const response = await app.request("/tools/not-a-tool", undefined, bindings);
+    const body = await response.json<{ error: string }>();
+
+    expect(response.status).toBe(404);
+    expect(body.error).toBe("not_found");
   });
 
   it("redirects the legacy shelf URL to the canonical custom domain", async () => {
