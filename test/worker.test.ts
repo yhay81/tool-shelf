@@ -72,8 +72,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="noriai-hyo"');
     expect(html).toContain('data-tool="kairan-to"');
     expect(html).toContain('data-tool="site-hodoki"');
-    expect(html).toContain("36 TOOLS");
-    expect(html).toContain("36件");
+    expect(html).toContain('data-tool="pon-hakushu"');
+    expect(html).toContain("37 TOOLS");
+    expect(html).toContain("37件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -98,13 +99,15 @@ describe("worker", () => {
     expect(html).toContain("のりあい表");
     expect(html).toContain("回覧灯");
     expect(html).toContain("サイトほどき");
+    expect(html).toContain("ぽん拍手");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":36');
+    expect(html).toContain('"numberOfItems":37');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
     expect(html).toContain("https://tools.yhay81.com/tools/kairan-to");
     expect(html).toContain("https://tools.yhay81.com/tools/site-hodoki");
+    expect(html).toContain("https://tools.yhay81.com/tools/pon-hakushu");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -171,6 +174,9 @@ describe("worker", () => {
     expect(response.headers.get("content-security-policy")).toContain(
       "https://site-hodoki.yhay81.com",
     );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://pon-hakushu.yhay81.com",
+    );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
@@ -223,6 +229,26 @@ describe("worker", () => {
     expect(html).toContain("入力URL・結果を保存しない");
   });
 
+  it("publishes the ぽん拍手 detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/pon-hakushu",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>そのページへ、ひとつ拍手 | ぽん拍手 | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/pon-hakushu" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://pon-hakushu.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://pon-hakushu.yhay81.com"');
+    expect(html).toContain("読者名・自由文なし");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -231,8 +257,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(38);
-    expect(new Set(locations)).toHaveProperty("size", 38);
+    expect(locations).toHaveLength(39);
+    expect(new Set(locations)).toHaveProperty("size", 39);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -241,6 +267,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/noriai-hyo");
     expect(locations).toContain("https://tools.yhay81.com/tools/kairan-to");
     expect(locations).toContain("https://tools.yhay81.com/tools/site-hodoki");
+    expect(locations).toContain("https://tools.yhay81.com/tools/pon-hakushu");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {

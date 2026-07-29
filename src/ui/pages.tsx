@@ -404,6 +404,18 @@ export const tools = [
     tag: "サイトの骨組みを持ち出す",
     url: "https://site-hodoki.yhay81.com",
   },
+  {
+    categories: "create share",
+    description:
+      "個人サイトの一ページにリンクを一つ置き、四種類の定型拍手を受け取り、作者だけの集計で確かめる。",
+    facts: ["登録不要", "読者名・自由文なし"],
+    image: "https://pon-hakushu.yhay81.com/og.svg",
+    imageAlt: "個人サイトのページから四つの拍手が飛び、作者だけの集計トレイへ届くぽん拍手",
+    name: "ぽん拍手",
+    slug: "pon-hakushu",
+    tag: "そのページへ、ひとつ拍手",
+    url: "https://pon-hakushu.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
