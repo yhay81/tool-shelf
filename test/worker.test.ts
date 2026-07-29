@@ -59,8 +59,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="kasane-fuda"');
     expect(html).toContain('data-tool="maigo-poster"');
     expect(html).toContain('data-tool="yomiato"');
-    expect(html).toContain("24 TOOLS");
-    expect(html).toContain("24件");
+    expect(html).toContain('data-tool="uchigraph"');
+    expect(html).toContain("25 TOOLS");
+    expect(html).toContain("25件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -74,6 +75,7 @@ describe("worker", () => {
     expect(html).toContain("かさね札");
     expect(html).toContain("まいごポスター");
     expect(html).toContain("読み跡");
+    expect(html).toContain("打ちグラフ");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -108,6 +110,9 @@ describe("worker", () => {
       "https://maigo-poster.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain("https://yomiato.yhay81.com");
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://uchigraph.yhay81.com",
+    );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
@@ -430,6 +435,29 @@ describe("worker", () => {
       eventPayload.sessionId,
       eventPayload.name,
       "yomiato",
+      expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+    );
+  });
+
+  it("accepts Uchigraph as an allowlisted tool", async () => {
+    const response = await app.request(
+      "/api/events",
+      {
+        body: JSON.stringify({ ...eventPayload, tool: "uchigraph" }),
+        headers: {
+          "content-type": "application/json",
+          "sec-fetch-site": "same-origin",
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(204);
+    expect(bind).toHaveBeenCalledWith(
+      eventPayload.sessionId,
+      eventPayload.name,
+      "uchigraph",
       expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
     );
   });

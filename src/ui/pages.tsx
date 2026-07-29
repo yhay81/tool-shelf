@@ -268,6 +268,17 @@ const tools = [
     tag: "原稿の反応を見る",
     url: "https://yomiato.yhay81.com",
   },
+  {
+    categories: "create organize",
+    description: "任意の課題文を共有し、入力の速さ、正確さ、つまずいた文字位置をグラフで見比べる。",
+    facts: ["登録不要", "課題・結果は一覧に出さない"],
+    image: "https://uchigraph.yhay81.com/og.png",
+    imageAlt: "打ちグラフで課題文のつまずきが上達グラフへ変わる",
+    name: "打ちグラフ",
+    slug: "uchigraph",
+    tag: "入力の跡を見る",
+    url: "https://uchigraph.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
