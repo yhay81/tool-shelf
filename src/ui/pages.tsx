@@ -302,6 +302,18 @@ const tools = [
     tag: "苦手を見つける",
     url: "https://ipass-map.yhay81.com",
   },
+  {
+    categories: "create organize share",
+    description:
+      "公開キャラシのURLから能力値と技能を移し、見やすい探索者の札として保存・共有する。",
+    facts: ["登録不要", "編集鍵つき共有"],
+    image: "https://takufuda.yhay81.com/og.svg",
+    imageAlt: "卓札の探索者カード、能力値レーダー、技能とセッション出力が並ぶ画面",
+    name: "卓札",
+    slug: "takufuda",
+    tag: "探索者を移して共有",
+    url: "https://takufuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
