@@ -452,6 +452,18 @@ export const tools = [
     tag: "空いたポジションに入る",
     url: "https://suketto-court.yhay81.com",
   },
+  {
+    categories: "organize plan share",
+    description:
+      "小中規模TCG大会の受付、スイスドロー、卓番号、双方の結果確認、勝点とOMW%による順位を一つの開催札で進める。",
+    facts: ["登録・連絡先不要", "両者一致で結果確定"],
+    image: "https://round-fuda.yhay81.com/og.svg",
+    imageAlt: "暗い大会卓の上に、三つの卓番号と対戦者が並ぶ紙の組合せ札を置いたラウンド札",
+    name: "ラウンド札",
+    slug: "round-fuda",
+    tag: "卓番号から結果まで",
+    url: "https://round-fuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
