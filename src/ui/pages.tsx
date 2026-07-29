@@ -325,6 +325,17 @@ const tools = [
     tag: "旅のしおりを作る",
     url: "https://tabidan.yhay81.com",
   },
+  {
+    categories: "create organize share",
+    description: "自己紹介、活動リンク、確認事項、読んだ印を、一枚の公開カードにまとめる。",
+    facts: ["登録不要", "閲覧URLと編集鍵を分離"],
+    image: "https://yorishiru.yhay81.com/og.svg",
+    imageAlt: "よりしるのプロフィールカードに自己紹介、活動リンク、確認事項が並ぶ画面",
+    name: "よりしる",
+    slug: "yorishiru",
+    tag: "プロフィールを一枚へ",
+    url: "https://yorishiru.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

@@ -64,8 +64,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="ipass-map"');
     expect(html).toContain('data-tool="takufuda"');
     expect(html).toContain('data-tool="tabidan"');
-    expect(html).toContain("29 TOOLS");
-    expect(html).toContain("29件");
+    expect(html).toContain('data-tool="yorishiru"');
+    expect(html).toContain("30 TOOLS");
+    expect(html).toContain("30件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -83,6 +84,7 @@ describe("worker", () => {
     expect(html).toContain("つみえらび");
     expect(html).toContain("ITパスポート弱点マップ");
     expect(html).toContain("たび段");
+    expect(html).toContain("よりしる");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -130,6 +132,9 @@ describe("worker", () => {
       "https://takufuda.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain("https://tabidan.yhay81.com");
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://yorishiru.yhay81.com",
+    );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
