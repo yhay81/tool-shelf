@@ -83,12 +83,21 @@ describe("worker", () => {
       "https://dice-seat.yusuke8h.workers.dev",
     );
     expect(response.headers.get("content-security-policy")).toContain(
-      "https://yose-bloom.yusuke8h.workers.dev",
+      "https://yose-bloom.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
     expect(html).not.toContain("成功条件");
+  });
+
+  it("redirects the legacy shelf URL to the canonical custom domain", async () => {
+    const response = await app.request(
+      "https://tool-shelf.yusuke8h.workers.dev/privacy?from=legacy",
+    );
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe("https://tools.yhay81.com/privacy?from=legacy");
   });
 
   it("explains the actual data boundary", async () => {
