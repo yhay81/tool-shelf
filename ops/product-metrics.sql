@@ -45,5 +45,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'ano-hon-fuda' THEN session_id END) AS ano_hon_fuda,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'post-gura' THEN session_id END) AS post_gura,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'suketto-court' THEN session_id END) AS suketto_court,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'round-fuda' THEN session_id END) AS round_fuda
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'round-fuda' THEN session_id END) AS round_fuda,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'tejun-dai' THEN session_id END) AS tejun_dai
 FROM product_events;
