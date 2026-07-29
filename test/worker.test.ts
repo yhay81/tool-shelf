@@ -173,6 +173,26 @@ describe("worker", () => {
     expect(batch).toHaveBeenCalledOnce();
   });
 
+  it("discards explicit QA events sent by a cached client", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/api/events",
+      {
+        body: JSON.stringify(eventPayload),
+        headers: {
+          "content-type": "application/json",
+          referer: "https://tools.yhay81.com/?qa=1",
+          "sec-fetch-site": "same-origin",
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(204);
+    expect(prepare).not.toHaveBeenCalled();
+    expect(batch).not.toHaveBeenCalled();
+  });
+
   it("accepts Mingle Frame as an allowlisted tool", async () => {
     const response = await app.request(
       "/api/events",

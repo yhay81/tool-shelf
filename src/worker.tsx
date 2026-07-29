@@ -64,6 +64,19 @@ app.get("/privacy", (c) => c.html(<PrivacyPage />));
 app.post("/api/events", async (c) => {
   c.header("Cache-Control", "no-store");
 
+  const referrer = c.req.header("referer");
+  if (referrer) {
+    try {
+      const referrerUrl = new URL(referrer);
+      const requestUrl = new URL(c.req.url);
+      if (referrerUrl.origin === requestUrl.origin && referrerUrl.searchParams.get("qa") === "1") {
+        return c.body(null, 204);
+      }
+    } catch {
+      // Continue with normal validation for a malformed referrer.
+    }
+  }
+
   const contentLength = Number(c.req.header("content-length") ?? "0");
   if (contentLength > 1024) {
     return c.json({ error: "payload_too_large" }, 413);
