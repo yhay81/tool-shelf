@@ -257,6 +257,17 @@ const tools = [
     tag: "迷子の捜索を始める",
     url: "https://maigo-poster.yhay81.com",
   },
+  {
+    categories: "create share",
+    description: "原稿を限定共有し、読者の段落別リアクションと非公開の読後メモを作者だけへ集める。",
+    facts: ["登録不要", "原稿・感想は一覧に出さない"],
+    image: "https://yomiato.yhay81.com/og.png",
+    imageAlt: "読み跡で原稿の段落から色の反応が作者の地図へつながる",
+    name: "読み跡",
+    slug: "yomiato",
+    tag: "原稿の反応を見る",
+    url: "https://yomiato.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
