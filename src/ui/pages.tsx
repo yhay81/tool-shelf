@@ -279,6 +279,18 @@ const tools = [
     tag: "入力の跡を見る",
     url: "https://uchigraph.yhay81.com",
   },
+  {
+    categories: "find plan",
+    description:
+      "Steamの候補URLを2〜6本置き、現在価格、日本語レビュー、日本語対応、環境を横並びにする。",
+    facts: ["登録不要", "候補履歴を保存しない"],
+    image: "https://tsumi-erabi.yhay81.com/og.png",
+    imageAlt: "つみえらびで三枚のゲーム候補から黄色く照らされた一枚を選ぶ",
+    name: "つみえらび",
+    slug: "tsumi-erabi",
+    tag: "今夜の一本を選ぶ",
+    url: "https://tsumi-erabi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
