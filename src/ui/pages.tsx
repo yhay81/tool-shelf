@@ -246,6 +246,17 @@ const tools = [
     tag: "交換候補を重ねる",
     url: "https://kasane-fuda.yhay81.com",
   },
+  {
+    categories: "create plan share",
+    description: "写真から、迷子ペットの捜索ページ、QRポスター、匿名の目撃フォームをまとめて作る。",
+    facts: ["登録不要", "目撃情報は作成者だけ"],
+    image: "https://maigo-poster.yhay81.com/og.png",
+    imageAlt: "まいごポスターで写真からQRポスターと目撃場所の入口がつながる",
+    name: "まいごポスター",
+    slug: "maigo-poster",
+    tag: "迷子の捜索を始める",
+    url: "https://maigo-poster.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
