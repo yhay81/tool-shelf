@@ -73,8 +73,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="kairan-to"');
     expect(html).toContain('data-tool="site-hodoki"');
     expect(html).toContain('data-tool="pon-hakushu"');
-    expect(html).toContain("37 TOOLS");
-    expect(html).toContain("37件");
+    expect(html).toContain('data-tool="ano-hon-fuda"');
+    expect(html).toContain("38 TOOLS");
+    expect(html).toContain("38件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -100,14 +101,16 @@ describe("worker", () => {
     expect(html).toContain("回覧灯");
     expect(html).toContain("サイトほどき");
     expect(html).toContain("ぽん拍手");
+    expect(html).toContain("あの本札");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":37');
+    expect(html).toContain('"numberOfItems":38');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
     expect(html).toContain("https://tools.yhay81.com/tools/kairan-to");
     expect(html).toContain("https://tools.yhay81.com/tools/site-hodoki");
     expect(html).toContain("https://tools.yhay81.com/tools/pon-hakushu");
+    expect(html).toContain("https://tools.yhay81.com/tools/ano-hon-fuda");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -176,6 +179,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://pon-hakushu.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://ano-hon-fuda.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -249,6 +255,26 @@ describe("worker", () => {
     expect(html).toContain("読者名・自由文なし");
   });
 
+  it("publishes the あの本札 detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/ano-hon-fuda",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>思い出の断片を、あの一冊へ | あの本札 | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/ano-hon-fuda" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://ano-hon-fuda.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://ano-hon-fuda.yhay81.com"');
+    expect(html).toContain("公開一覧・画像投稿なし");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -257,8 +283,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(39);
-    expect(new Set(locations)).toHaveProperty("size", 39);
+    expect(locations).toHaveLength(40);
+    expect(new Set(locations)).toHaveProperty("size", 40);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -268,6 +294,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/kairan-to");
     expect(locations).toContain("https://tools.yhay81.com/tools/site-hodoki");
     expect(locations).toContain("https://tools.yhay81.com/tools/pon-hakushu");
+    expect(locations).toContain("https://tools.yhay81.com/tools/ano-hon-fuda");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {

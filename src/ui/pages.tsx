@@ -416,6 +416,18 @@ export const tools = [
     tag: "そのページへ、ひとつ拍手",
     url: "https://pon-hakushu.yhay81.com",
   },
+  {
+    categories: "organize share",
+    description:
+      "題名を思い出せない本の記憶を時期、場所、装丁、場面の札に整理し、共有相手から確認できる候補を受け取る。",
+    facts: ["登録不要", "公開一覧・画像投稿なし"],
+    image: "https://ano-hon-fuda.yhay81.com/og.svg",
+    imageAlt: "四枚の記憶札が虫眼鏡を通り、確認中と正解の候補が並ぶ本棚へつながるあの本札",
+    name: "あの本札",
+    slug: "ano-hon-fuda",
+    tag: "思い出の断片を、あの一冊へ",
+    url: "https://ano-hon-fuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
