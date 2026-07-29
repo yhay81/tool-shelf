@@ -223,6 +223,18 @@ const tools = [
     tag: "交換グループを探す",
     url: "https://heart-board.yhay81.com",
   },
+  {
+    categories: "find plan share",
+    description:
+      "VRChat、cluster、Resoniteの未来イベントを、時間・端末・ジャンルで探して予定に入れる。",
+    facts: ["登録不要", "カレンダー追加・共有"],
+    image: "https://yoru-mado.yhay81.com/og.png",
+    imageAlt: "よる窓の夜の時間割に、三つの仮想空間イベント窓が灯る画面",
+    name: "よる窓",
+    slug: "yoru-mado",
+    tag: "今夜の会場を探す",
+    url: "https://yoru-mado.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

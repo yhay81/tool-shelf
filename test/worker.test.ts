@@ -55,8 +55,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="dice-seat"');
     expect(html).toContain('data-tool="yose-bloom"');
     expect(html).toContain('data-tool="heart-board"');
-    expect(html).toContain("20 TOOLS");
-    expect(html).toContain("20件");
+    expect(html).toContain('data-tool="yoru-mado"');
+    expect(html).toContain("21 TOOLS");
+    expect(html).toContain("21件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -66,6 +67,7 @@ describe("worker", () => {
     expect(html).toContain("Dice Seat");
     expect(html).toContain("Yose Bloom");
     expect(html).toContain("Heart Board");
+    expect(html).toContain("よる窓");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -89,6 +91,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://yoru-mado.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -320,6 +325,29 @@ describe("worker", () => {
       eventPayload.sessionId,
       eventPayload.name,
       "heart-board",
+      expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+    );
+  });
+
+  it("accepts Yoru Mado as an allowlisted tool", async () => {
+    const response = await app.request(
+      "/api/events",
+      {
+        body: JSON.stringify({ ...eventPayload, tool: "yoru-mado" }),
+        headers: {
+          "content-type": "application/json",
+          "sec-fetch-site": "same-origin",
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(204);
+    expect(bind).toHaveBeenCalledWith(
+      eventPayload.sessionId,
+      eventPayload.name,
+      "yoru-mado",
       expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
     );
   });
