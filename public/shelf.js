@@ -9,6 +9,8 @@
   const sessionKey = "tool-shelf:session:v1";
   const visitKey = "tool-shelf:last-visit:v1";
   const today = new Date().toISOString().slice(0, 10);
+  const automatedQa =
+    new URLSearchParams(window.location.search).get("qa") === "1" || navigator.webdriver === true;
   let activeFilter = "all";
 
   const normalize = (value) =>
@@ -80,6 +82,10 @@
   }
 
   const track = (name, tool = "") => {
+    if (automatedQa) {
+      return;
+    }
+
     void fetch("/api/events", {
       body: JSON.stringify({ name, sessionId, tool }),
       headers: { "content-type": "application/json" },
