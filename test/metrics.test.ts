@@ -23,6 +23,7 @@ describe("tool metrics coverage", () => {
     expect(shelfClient).toContain('new URLSearchParams(window.location.search).get("qa") === "1"');
     expect(shelfClient).toContain("navigator.webdriver === true");
     expect(shelfClient).toContain("if (automatedQa)");
-    expect(layout).toContain("/shelf.js?v=20260729-qa-exclusion");
+    expect(shelfClient).toContain('destination.searchParams.set("qa", "1")');
+    expect(layout).toContain("/shelf.js?v=20260729-qa-propagation");
   });
 });
