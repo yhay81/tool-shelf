@@ -39,5 +39,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'tegotae' THEN session_id END) AS tegotae,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'otayori-maku' THEN session_id END) AS otayori_maku,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'noriai-hyo' THEN session_id END) AS noriai_hyo,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'kairan-to' THEN session_id END) AS kairan_to
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'kairan-to' THEN session_id END) AS kairan_to,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'site-hodoki' THEN session_id END) AS site_hodoki
 FROM product_events;
