@@ -34,5 +34,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'ipass-map' THEN session_id END) AS ipass_map,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'takufuda' THEN session_id END) AS takufuda,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'tabidan' THEN session_id END) AS tabidan,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'yorishiru' THEN session_id END) AS yorishiru
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'yorishiru' THEN session_id END) AS yorishiru,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'mcp-erabi' THEN session_id END) AS mcp_erabi
 FROM product_events;

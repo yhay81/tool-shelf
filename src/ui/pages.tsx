@@ -336,6 +336,18 @@ const tools = [
     tag: "プロフィールを一枚へ",
     url: "https://yorishiru.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "MCPサーバーを用途で探し、外部接続・手元実行・秘密情報・コード確認先を並べて比べる。",
+    facts: ["登録不要", "Registry公開データ同期"],
+    image: "https://mcp-erabi.yhay81.com/og.svg",
+    imageAlt: "MCPえらびの検索条件と二つのMCPサーバーの接続条件を並べた比較画面",
+    name: "MCPえらび",
+    slug: "mcp-erabi",
+    tag: "MCPの接続条件を比較",
+    url: "https://mcp-erabi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
