@@ -67,8 +67,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="tabidan"');
     expect(html).toContain('data-tool="yorishiru"');
     expect(html).toContain('data-tool="mcp-erabi"');
-    expect(html).toContain("31 TOOLS");
-    expect(html).toContain("31件");
+    expect(html).toContain('data-tool="tegotae"');
+    expect(html).toContain("32 TOOLS");
+    expect(html).toContain("32件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -88,6 +89,7 @@ describe("worker", () => {
     expect(html).toContain("たび段");
     expect(html).toContain("よりしる");
     expect(html).toContain("MCPえらび");
+    expect(html).toContain("手ごたえ");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -141,6 +143,7 @@ describe("worker", () => {
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mcp-erabi.yhay81.com",
     );
+    expect(response.headers.get("content-security-policy")).toContain("https://tegotae.yhay81.com");
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
     expect(html).not.toContain("実験");
