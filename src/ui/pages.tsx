@@ -370,6 +370,17 @@ export const tools = [
     tag: "おたよりを配信へ",
     url: "https://otayori-maku.yhay81.com",
   },
+  {
+    categories: "plan organize share",
+    description: "スポーツの次の一予定について、出欠、車の空席、乗車希望人数を一枚に集める。",
+    facts: ["登録不要", "個別回答は幹事だけ"],
+    image: "https://noriai-hyo.yhay81.com/og.svg",
+    imageAlt: "のりあい表の競技ボードと送迎の空席・希望人数が並ぶ画面",
+    name: "のりあい表",
+    slug: "noriai-hyo",
+    tag: "出欠と送迎を一枚へ",
+    url: "https://noriai-hyo.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
