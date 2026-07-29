@@ -464,6 +464,18 @@ export const tools = [
     tag: "卓番号から結果まで",
     url: "https://round-fuda.yhay81.com",
   },
+  {
+    categories: "create organize",
+    description:
+      "写真、番号、注意札を一つの作業台で組み、最大12手順をA4・PDFと編集用ファイルへ整える。写真と本文は端末外へ送らない。",
+    facts: ["登録・アップロード不要", "写真・本文は端末内"],
+    image: "https://tejun-dai.yhay81.com/og.svg",
+    imageAlt: "濃紺の作業台に、写真枠と番号と注意札を並べたA4作業手順書を置いた手順台",
+    name: "手順台",
+    slug: "tejun-dai",
+    tag: "写真を置いて、番号で渡す",
+    url: "https://tejun-dai.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
