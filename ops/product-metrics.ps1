@@ -67,6 +67,7 @@ $OutboundUsers = [int]$Row.outbound_users
         dice_seat = [int]$Row.dice_seat
         yose_bloom = [int]$Row.yose_bloom
         heart_board = [int]$Row.heart_board
+        yoru_mado = [int]$Row.yoru_mado
     }
     rates = [ordered]@{
         outbound_percent = Get-Percent $OutboundUsers $Users
