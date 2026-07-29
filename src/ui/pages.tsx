@@ -348,6 +348,17 @@ const tools = [
     tag: "MCPの接続条件を比較",
     url: "https://mcp-erabi.yhay81.com",
   },
+  {
+    categories: "organize",
+    description: "タグを1行置き、今日と7日間の閲覧数、読まれたページ、流入元を一画面で見る。",
+    facts: ["Cookie・広告なし", "個別ログを保存しない"],
+    image: "https://tegotae.yhay81.com/og.svg",
+    imageAlt: "手ごたえの今日と7日間のページビュー、折れ線グラフが並ぶアクセス解析画面",
+    name: "手ごたえ",
+    slug: "tegotae",
+    tag: "サイトの反応を見る",
+    url: "https://tegotae.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
