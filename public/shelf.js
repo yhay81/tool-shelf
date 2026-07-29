@@ -100,6 +100,12 @@
   }
 
   document.querySelectorAll("[data-tool]").forEach((link) => {
+    if (automatedQa && link instanceof HTMLAnchorElement) {
+      const destination = new URL(link.href);
+      destination.searchParams.set("qa", "1");
+      link.href = destination.toString();
+    }
+
     link.addEventListener("click", () => {
       if (link instanceof HTMLAnchorElement) {
         track("opened", link.dataset.tool ?? "");
