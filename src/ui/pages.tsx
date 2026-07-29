@@ -314,6 +314,17 @@ const tools = [
     tag: "探索者を移して共有",
     url: "https://takufuda.yhay81.com",
   },
+  {
+    categories: "plan organize share",
+    description: "旅程、持ち物、費用を一枚のしおりにまとめ、閲覧URLと編集URLで同行者へ共有する。",
+    facts: ["登録不要", "印刷・JSON・カレンダー"],
+    image: "https://tabidan.yhay81.com/og.svg",
+    imageAlt: "たび段の旅行日程、持ち物、費用をまとめた共有しおり",
+    name: "たび段",
+    slug: "tabidan",
+    tag: "旅のしおりを作る",
+    url: "https://tabidan.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
