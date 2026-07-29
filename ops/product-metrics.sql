@@ -23,5 +23,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'ava-rack' THEN session_id END) AS ava_rack,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'chair-call' THEN session_id END) AS chair_call,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'dice-seat' THEN session_id END) AS dice_seat,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'yose-bloom' THEN session_id END) AS yose_bloom
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'yose-bloom' THEN session_id END) AS yose_bloom,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'heart-board' THEN session_id END) AS heart_board
 FROM product_events;
