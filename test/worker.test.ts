@@ -61,8 +61,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="yomiato"');
     expect(html).toContain('data-tool="uchigraph"');
     expect(html).toContain('data-tool="tsumi-erabi"');
-    expect(html).toContain("26 TOOLS");
-    expect(html).toContain("26件");
+    expect(html).toContain('data-tool="ipass-map"');
+    expect(html).toContain("27 TOOLS");
+    expect(html).toContain("27件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -78,6 +79,7 @@ describe("worker", () => {
     expect(html).toContain("読み跡");
     expect(html).toContain("打ちグラフ");
     expect(html).toContain("つみえらび");
+    expect(html).toContain("ITパスポート弱点マップ");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -117,6 +119,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://tsumi-erabi.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://ipass-map.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -486,6 +491,29 @@ describe("worker", () => {
       eventPayload.sessionId,
       eventPayload.name,
       "tsumi-erabi",
+      expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+    );
+  });
+
+  it("accepts IT Passport Map as an allowlisted tool", async () => {
+    const response = await app.request(
+      "/api/events",
+      {
+        body: JSON.stringify({ ...eventPayload, tool: "ipass-map" }),
+        headers: {
+          "content-type": "application/json",
+          "sec-fetch-site": "same-origin",
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(204);
+    expect(bind).toHaveBeenCalledWith(
+      eventPayload.sessionId,
+      eventPayload.name,
+      "ipass-map",
       expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
     );
   });

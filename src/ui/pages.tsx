@@ -291,6 +291,17 @@ const tools = [
     tag: "今夜の一本を選ぶ",
     url: "https://tsumi-erabi.yhay81.com",
   },
+  {
+    categories: "find plan",
+    description: "ITパスポートの独自問題を12問解き、3領域・9テーマの苦手を地図にする。",
+    facts: ["登録不要", "履歴は端末内だけ"],
+    image: "https://ipass-map.yhay81.com/og.png",
+    imageAlt: "ITパスポートの解答用紙が三色九マスの弱点マップへ変わる",
+    name: "ITパスポート弱点マップ",
+    slug: "ipass-map",
+    tag: "苦手を見つける",
+    url: "https://ipass-map.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
