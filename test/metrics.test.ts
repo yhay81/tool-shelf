@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import metricsScript from "../ops/product-metrics.ps1?raw";
 import metricsSql from "../ops/product-metrics.sql?raw";
+import shelfClient from "../public/shelf.js?raw";
 import pages from "../src/ui/pages.tsx?raw";
 
 describe("tool metrics coverage", () => {
@@ -15,5 +16,11 @@ describe("tool metrics coverage", () => {
       expect(metricsSql).toContain(`AS ${metricName}`);
       expect(metricsScript).toContain(`${metricName} = [int]$Row.${metricName}`);
     }
+  });
+
+  it("excludes explicit and webdriver QA from usage metrics", () => {
+    expect(shelfClient).toContain('new URLSearchParams(window.location.search).get("qa") === "1"');
+    expect(shelfClient).toContain("navigator.webdriver === true");
+    expect(shelfClient).toContain("if (automatedQa)");
   });
 });
