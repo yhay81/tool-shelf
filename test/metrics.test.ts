@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import metricsScript from "../ops/product-metrics.ps1?raw";
 import metricsSql from "../ops/product-metrics.sql?raw";
 import shelfClient from "../public/shelf.js?raw";
+import layout from "../src/ui/layout.tsx?raw";
 import pages from "../src/ui/pages.tsx?raw";
 
 describe("tool metrics coverage", () => {
@@ -22,5 +23,6 @@ describe("tool metrics coverage", () => {
     expect(shelfClient).toContain('new URLSearchParams(window.location.search).get("qa") === "1"');
     expect(shelfClient).toContain("navigator.webdriver === true");
     expect(shelfClient).toContain("if (automatedQa)");
+    expect(layout).toContain("/shelf.js?v=20260729-qa-exclusion");
   });
 });
