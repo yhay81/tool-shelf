@@ -520,6 +520,17 @@ export const tools = [
     tag: "学んだ時間が、机に灯る",
     url: "https://tsukue-no-hi.yhay81.com",
   },
+  {
+    categories: "organize create",
+    description: "読みたい本、読んでいる頁、読了日、私的な感想を、公開せず端末内の棚へ残す。",
+    facts: ["登録・公開なし", "CSV・編集用保存"],
+    image: "https://shiori-dana.yhay81.com/og.svg",
+    imageAlt: "木の棚に本としおりが並び、開いた本に読んだ頁を残す栞棚",
+    name: "栞棚",
+    slug: "shiori-dana",
+    tag: "読んだ頁を、棚に残す",
+    url: "https://shiori-dana.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
