@@ -498,6 +498,17 @@ export const tools = [
     tag: "整備の履歴と、次の灯り",
     url: "https://seibi-to.yhay81.com",
   },
+  {
+    categories: "organize create",
+    description: "釣行、魚種、サイズ、仕掛け、写真を、釣り場の位置を送らず端末内の水辺へ残す。",
+    facts: ["登録・GPS要求なし", "位置なし共有札・編集用保存"],
+    image: "https://choka-to.yhay81.com/og.svg",
+    imageAlt: "朝焼けの水面と浮きのそばに、魚種、サイズ、仕掛けを記した釣果札を並べた釣果灯",
+    name: "釣果灯",
+    slug: "choka-to",
+    tag: "釣り場を出さず、釣果を残す",
+    url: "https://choka-to.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
