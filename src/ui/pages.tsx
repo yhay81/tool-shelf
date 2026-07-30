@@ -580,6 +580,18 @@ export const tools = [
     tag: "一日ずつ、次の書き手へ",
     url: "https://relay-goyomi.yhay81.com",
   },
+  {
+    categories: "find share",
+    description:
+      "ゲーム名だけでなく、機種、活動時間、VC、遊び方、初心者歓迎から、公開中の仲間募集を探す。",
+    facts: ["登録・広告なし", "編集鍵・報告保護"],
+    image: "https://nakama-fuda.yhay81.com/og.png",
+    imageAlt: "21時の活動時計と遊び方の条件札を囲み、三つの着席と一つの空席を示す仲間札の募集卓",
+    name: "仲間札",
+    slug: "nakama-fuda",
+    tag: "遊び方の合う席へ",
+    url: "https://nakama-fuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
