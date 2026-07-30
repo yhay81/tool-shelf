@@ -96,6 +96,7 @@ $OutboundUsers = [int]$Row.outbound_users
         shiori_dana = [int]$Row.shiori_dana
         chord_dai = [int]$Row.chord_dai
         genba_cho = [int]$Row.genba_cho
+        iriguchi_cho = [int]$Row.iriguchi_cho
     }
     rates = [ordered]@{
         outbound_percent = Get-Percent $OutboundUsers $Users
