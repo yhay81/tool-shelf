@@ -476,6 +476,17 @@ export const tools = [
     tag: "写真を置いて、番号で渡す",
     url: "https://tejun-dai.yhay81.com",
   },
+  {
+    categories: "organize share",
+    description: "合い鍵URLを渡した小さな団体だけで、投稿、返信、確認印、写真を30日共有する。",
+    facts: ["参加者登録不要", "板・写真は30日で削除"],
+    image: "https://aikagi-ban.yhay81.com/og.svg",
+    imageAlt: "深緑の背景に合い鍵と、投稿・確認印・返信が並ぶコルクの連絡板を置いた合鍵板",
+    name: "合鍵板",
+    slug: "aikagi-ban",
+    tag: "合い鍵を渡す、30日の板",
+    url: "https://aikagi-ban.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
