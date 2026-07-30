@@ -487,6 +487,17 @@ export const tools = [
     tag: "合い鍵を渡す、30日の板",
     url: "https://aikagi-ban.yhay81.com",
   },
+  {
+    categories: "organize create",
+    description: "愛車の整備日、走行距離、費用、次回期限、写真を、端末内の車庫計器盤へ残す。",
+    facts: ["登録・内容送信なし", "PDF・CSV・編集用保存"],
+    image: "https://seibi-to.yhay81.com/og.svg",
+    imageAlt: "暗い車庫の計器盤に、車、走行距離、次回整備の灯り、整備履歴を並べた整備灯",
+    name: "整備灯",
+    slug: "seibi-to",
+    tag: "整備の履歴と、次の灯り",
+    url: "https://seibi-to.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
