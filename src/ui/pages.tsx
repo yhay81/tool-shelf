@@ -555,6 +555,18 @@ export const tools = [
     tag: "申し込みから余韻まで、一枚ずつ",
     url: "https://genba-cho.yhay81.com",
   },
+  {
+    categories: "share create",
+    description: "作品、通販、SNS、配信、仕事の相談先を、画像や外部APIなしの一枚から案内する。",
+    facts: ["登録・広告なし", "編集鍵・報告保護"],
+    image: "https://iriguchi-cho.yhay81.com/og.svg",
+    imageAlt:
+      "制作机のプロフィールカードから、作品、通販、配信、連絡先の小さな入口へ線が伸びる入口帖",
+    name: "入口帖",
+    slug: "iriguchi-cho",
+    tag: "活動の入口を、一枚に",
+    url: "https://iriguchi-cho.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
