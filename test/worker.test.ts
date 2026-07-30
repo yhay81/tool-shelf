@@ -84,8 +84,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="tsukue-no-hi"');
     expect(html).toContain('data-tool="shiori-dana"');
     expect(html).toContain('data-tool="chord-dai"');
-    expect(html).toContain("48 TOOLS");
-    expect(html).toContain("48件");
+    expect(html).toContain('data-tool="genba-cho"');
+    expect(html).toContain("49 TOOLS");
+    expect(html).toContain("49件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -122,8 +123,9 @@ describe("worker", () => {
     expect(html).toContain("机の灯");
     expect(html).toContain("栞棚");
     expect(html).toContain("コード台");
+    expect(html).toContain("現場帖");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":48');
+    expect(html).toContain('"numberOfItems":49');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -141,6 +143,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/tsukue-no-hi");
     expect(html).toContain("https://tools.yhay81.com/tools/shiori-dana");
     expect(html).toContain("https://tools.yhay81.com/tools/chord-dai");
+    expect(html).toContain("https://tools.yhay81.com/tools/genba-cho");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -164,6 +167,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://chord-dai.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://genba-cho.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
@@ -532,6 +538,26 @@ describe("worker", () => {
     expect(html).toContain("曲順・印刷・編集用保存");
   });
 
+  it("publishes the 現場帖 detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/genba-cho",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>申し込みから余韻まで、一枚ずつ | 現場帖 | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/genba-cho" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://genba-cho.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://genba-cho.yhay81.com"');
+    expect(html).toContain("ICS・編集用保存");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -540,8 +566,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(50);
-    expect(new Set(locations)).toHaveProperty("size", 50);
+    expect(locations).toHaveLength(51);
+    expect(new Set(locations)).toHaveProperty("size", 51);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -562,6 +588,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/tsukue-no-hi");
     expect(locations).toContain("https://tools.yhay81.com/tools/shiori-dana");
     expect(locations).toContain("https://tools.yhay81.com/tools/chord-dai");
+    expect(locations).toContain("https://tools.yhay81.com/tools/genba-cho");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {

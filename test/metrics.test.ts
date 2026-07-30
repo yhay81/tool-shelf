@@ -10,7 +10,7 @@ describe("tool metrics coverage", () => {
   it("keeps every published tool in outbound aggregation", () => {
     const slugs = [...pages.matchAll(/slug: "([a-z0-9-]+)"/g)].map((match) => match[1]);
 
-    expect(slugs).toHaveLength(48);
+    expect(slugs).toHaveLength(49);
     for (const slug of slugs) {
       const metricName = slug?.replaceAll("-", "_");
       expect(metricsSql).toContain(`tool = '${slug}'`);
