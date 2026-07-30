@@ -542,6 +542,19 @@ export const tools = [
     tag: "手元の一曲を、弾ける譜面へ",
     url: "https://chord-dai.yhay81.com",
   },
+  {
+    categories: "plan organize",
+    description:
+      "ライブやイベントの申込、当落、入金、発券、費用、参加履歴、感想を端末内の一枚へまとめる。",
+    facts: ["登録・公開なし", "ICS・編集用保存"],
+    image: "https://genba-cho.yhay81.com/og.svg",
+    imageAlt:
+      "暗い会場の照明の下に、ライブチケット、リストバンド、抽選から終演までの予定が並ぶ現場帖",
+    name: "現場帖",
+    slug: "genba-cho",
+    tag: "申し込みから余韻まで、一枚ずつ",
+    url: "https://genba-cho.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
