@@ -567,6 +567,19 @@ export const tools = [
     tag: "活動の入口を、一枚に",
     url: "https://iriguchi-cho.yhay81.com",
   },
+  {
+    categories: "share organize",
+    description:
+      "仲間で日付を予約し、記事ができたら外部リンクを結ぶ。空き・予約・公開が見渡せる記事リレー暦。",
+    facts: ["登録・広告なし", "参加鍵・枠編集鍵"],
+    image: "https://relay-goyomi.yhay81.com/og.png",
+    imageAlt:
+      "和紙の日付札を木苺色のリボンが順につなぎ、空き、予約、公開の記事リレーを示すリレー暦",
+    name: "リレー暦",
+    slug: "relay-goyomi",
+    tag: "一日ずつ、次の書き手へ",
+    url: "https://relay-goyomi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
