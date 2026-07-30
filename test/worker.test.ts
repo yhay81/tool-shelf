@@ -81,8 +81,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="aikagi-ban"');
     expect(html).toContain('data-tool="seibi-to"');
     expect(html).toContain('data-tool="choka-to"');
-    expect(html).toContain("45 TOOLS");
-    expect(html).toContain("45件");
+    expect(html).toContain('data-tool="tsukue-no-hi"');
+    expect(html).toContain("46 TOOLS");
+    expect(html).toContain("46件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -116,8 +117,9 @@ describe("worker", () => {
     expect(html).toContain("合鍵板");
     expect(html).toContain("整備灯");
     expect(html).toContain("釣果灯");
+    expect(html).toContain("机の灯");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":45');
+    expect(html).toContain('"numberOfItems":46');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -132,6 +134,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/aikagi-ban");
     expect(html).toContain("https://tools.yhay81.com/tools/seibi-to");
     expect(html).toContain("https://tools.yhay81.com/tools/choka-to");
+    expect(html).toContain("https://tools.yhay81.com/tools/tsukue-no-hi");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -224,6 +227,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://choka-to.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://tsukue-no-hi.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -457,6 +463,26 @@ describe("worker", () => {
     expect(html).toContain("位置なし共有札・編集用保存");
   });
 
+  it("publishes the 机の灯 detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/tsukue-no-hi",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>学んだ時間が、机に灯る | 机の灯 | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/tsukue-no-hi" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://tsukue-no-hi.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://tsukue-no-hi.yhay81.com"');
+    expect(html).toContain("CSV・編集用保存");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -465,8 +491,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(47);
-    expect(new Set(locations)).toHaveProperty("size", 47);
+    expect(locations).toHaveLength(48);
+    expect(new Set(locations)).toHaveProperty("size", 48);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -484,6 +510,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/aikagi-ban");
     expect(locations).toContain("https://tools.yhay81.com/tools/seibi-to");
     expect(locations).toContain("https://tools.yhay81.com/tools/choka-to");
+    expect(locations).toContain("https://tools.yhay81.com/tools/tsukue-no-hi");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {

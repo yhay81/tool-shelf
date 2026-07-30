@@ -509,6 +509,17 @@ export const tools = [
     tag: "釣り場を出さず、釣果を残す",
     url: "https://choka-to.yhay81.com",
   },
+  {
+    categories: "plan organize",
+    description: "教材別タイマー、週の目安、12週間の積み重ねを、SNSや広告なしで端末内の机へ残す。",
+    facts: ["登録・公開なし", "CSV・編集用保存"],
+    image: "https://tsukue-no-hi.yhay81.com/og.svg",
+    imageAlt: "夜の机にランプ、本、25分タイマー、学習の印をつけたノートを並べた机の灯",
+    name: "机の灯",
+    slug: "tsukue-no-hi",
+    tag: "学んだ時間が、机に灯る",
+    url: "https://tsukue-no-hi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
