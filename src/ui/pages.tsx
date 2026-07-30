@@ -531,6 +531,17 @@ export const tools = [
     tag: "読んだ頁を、棚に残す",
     url: "https://shiori-dana.yhay81.com",
   },
+  {
+    categories: "create organize",
+    description: "手元のコード譜を貼り、移調、カポ、メトロノーム、自動スクロールで演奏する。",
+    facts: ["登録・譜面送信なし", "曲順・印刷・編集用保存"],
+    image: "https://chord-dai.yhay81.com/og.svg",
+    imageAlt: "照明のついた譜面台にコード譜が開き、ギター、カポ、メトロノームが並ぶコード台",
+    name: "コード台",
+    slug: "chord-dai",
+    tag: "手元の一曲を、弾ける譜面へ",
+    url: "https://chord-dai.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
