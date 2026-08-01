@@ -98,8 +98,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="ongen-hikae"');
     expect(html).toContain('data-tool="atsumari-guchi"');
     expect(html).toContain('data-tool="shisou-to"');
-    expect(html).toContain("62 TOOLS");
-    expect(html).toContain("62件");
+    expect(html).toContain('data-tool="heya-to"');
+    expect(html).toContain("63 TOOLS");
+    expect(html).toContain("63件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -148,8 +149,9 @@ describe("worker", () => {
     expect(html).toContain("数式ほどき");
     expect(html).toContain("試合盤");
     expect(html).toContain("音源控え");
+    expect(html).toContain("部屋灯");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":62');
+    expect(html).toContain('"numberOfItems":63');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -181,6 +183,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/ongen-hikae");
     expect(html).toContain("https://tools.yhay81.com/tools/atsumari-guchi");
     expect(html).toContain("https://tools.yhay81.com/tools/shisou-to");
+    expect(html).toContain("https://tools.yhay81.com/tools/heya-to");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -247,6 +250,7 @@ describe("worker", () => {
     expect(response.headers.get("content-security-policy")).toContain(
       "https://shisou-to.yhay81.com",
     );
+    expect(response.headers.get("content-security-policy")).toContain("https://heya-to.yhay81.com");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
     );
@@ -896,6 +900,24 @@ describe("worker", () => {
     expect(html).toContain("12人・14日の進行灯");
   });
 
+  it("publishes the 部屋灯 detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/heya-to",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>5桁を置く。5人が灯る。 | 部屋灯 | Tool Shelf</title>");
+    expect(html).toContain('<link href="https://tools.yhay81.com/tools/heya-to" rel="canonical"/>');
+    expect(html).toContain(
+      '<meta content="https://heya-to.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://heya-to.yhay81.com"');
+    expect(html).toContain("12分で自動消灯");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -904,8 +926,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(64);
-    expect(new Set(locations)).toHaveProperty("size", 64);
+    expect(locations).toHaveLength(65);
+    expect(new Set(locations)).toHaveProperty("size", 65);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -940,6 +962,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/ongen-hikae");
     expect(locations).toContain("https://tools.yhay81.com/tools/atsumari-guchi");
     expect(locations).toContain("https://tools.yhay81.com/tools/shisou-to");
+    expect(locations).toContain("https://tools.yhay81.com/tools/heya-to");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {

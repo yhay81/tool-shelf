@@ -714,6 +714,17 @@ export const tools = [
     tag: "12台の端末。14日の試走。",
     url: "https://shisou-to.yhay81.com",
   },
+  {
+    categories: "play organize share",
+    description: "協力ライブの5桁、残り席、固定条件を12分だけ公開し、集まったら消す短期募集盤。",
+    facts: ["名前・連絡先・チャットなし", "12分で自動消灯"],
+    image: "https://heya-to.yhay81.com/og.svg",
+    imageAlt: "5桁のルーム番号、5席、12分の時間レールで短期募集を示す部屋灯",
+    name: "部屋灯",
+    slug: "heya-to",
+    tag: "5桁を置く。5人が灯る。",
+    url: "https://heya-to.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
