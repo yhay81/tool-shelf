@@ -690,6 +690,18 @@ export const tools = [
     tag: "使った音に、根拠を添える。",
     url: "https://ongen-hikae.yhay81.com",
   },
+  {
+    categories: "create organize",
+    description:
+      "小さなイベントの参加・興味あり・不参加を名前と人数だけで受け付け、定員と名簿をまとめる。",
+    facts: ["登録・連絡先なし", "定員超過は自動で待機"],
+    image: "https://atsumari-guchi.yhay81.com/og.svg",
+    imageAlt: "定員表示、色分けした参加札、会場入口、当日の名簿が一つの受付動線につながる集まり口",
+    name: "集まり口",
+    slug: "atsumari-guchi",
+    tag: "参加まで、迷わせない。",
+    url: "https://atsumari-guchi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
