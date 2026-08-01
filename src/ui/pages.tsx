@@ -604,6 +604,19 @@ export const tools = [
     tag: "締切から、次の展示室へ。",
     url: "https://kan-shigoto.yhay81.com",
   },
+  {
+    categories: "find plan",
+    description:
+      "マルシェ、ハンドメイド、フリマ、キッチンカー等の出店募集を、地域、内容、会場、料金、選考、締切から探す。",
+    facts: ["登録・広告なし", "編集鍵・報告保護"],
+    image: "https://shutten-fuda.yhay81.com/og.png",
+    imageAlt:
+      "あたたかな市場広場に締切札の付いた出店テントが並び、応募要項への門まで道筋が続く出店札",
+    name: "出店札",
+    slug: "shutten-fuda",
+    tag: "次の売り場を、締切から。",
+    url: "https://shutten-fuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
