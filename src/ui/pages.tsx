@@ -702,6 +702,18 @@ export const tools = [
     tag: "参加まで、迷わせない。",
     url: "https://atsumari-guchi.yhay81.com",
   },
+  {
+    categories: "plan organize share",
+    description:
+      "Google Playのクローズドテスト参加と、テスターごとの14日間の自己申告、気づきを一枚で進める。",
+    facts: ["メール・登録なし", "12人・14日の進行灯"],
+    image: "https://shisou-to.yhay81.com/og.svg",
+    imageAlt: "12台の端末ラックと14個の進行灯でクローズドテストの現在地を示す試走灯",
+    name: "試走灯",
+    slug: "shisou-to",
+    tag: "12台の端末。14日の試走。",
+    url: "https://shisou-to.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
