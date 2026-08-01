@@ -640,6 +640,19 @@ export const tools = [
     tag: "レシピを、次の卓へ。",
     url: "https://deck-watashi.yhay81.com",
   },
+  {
+    categories: "create find",
+    description:
+      "実際に使う日本語文を、自己配信する6つのOFL書体で並べ、用途と公式ライセンスを確認する。",
+    facts: ["入力文を送信しない", "6書体・OFL原文付き"],
+    image: "https://ji-kurabe.yhay81.com/og.png",
+    imageAlt:
+      "組版机の六つの見本札を入力棒から通し、比較トレーとライセンス引き出しで確かめる字くらべ",
+    name: "字くらべ",
+    slug: "ji-kurabe",
+    tag: "つくる文で、見くらべる。",
+    url: "https://ji-kurabe.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
