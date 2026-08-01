@@ -725,6 +725,18 @@ export const tools = [
     tag: "5桁を置く。5人が灯る。",
     url: "https://heya-to.yhay81.com",
   },
+  {
+    categories: "play organize share",
+    description:
+      "9桁のトレーナーIDと、継ぎたい因子・サポート条件だけを7日間公開して探せる非公式の募集札。",
+    facts: ["連絡先・ゲーム連携なし", "距離・脚質・因子で検索"],
+    image: "https://inshi-fuda.yhay81.com/og.svg",
+    imageAlt: "9桁のトレーナーIDと青・赤・固有・白の因子ノードがつながる因子札",
+    name: "因子札",
+    slug: "inshi-fuda",
+    tag: "9桁と、継ぎたい因子だけ。",
+    url: "https://inshi-fuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
