@@ -856,6 +856,18 @@ export const tools = [
     tag: "地域から、活動する法人を見つける。",
     url: "https://machi-npo.yhay81.com",
   },
+  {
+    categories: "find plan",
+    description:
+      "国土地理院の全国データから、指定緊急避難場所と指定避難所を分け、地域・災害種別・現在地で探す。",
+    facts: ["国土地理院公式データ・198,595件", "現在地は送信・保存しない"],
+    image: "https://hinan-saki.yhay81.com/og.svg",
+    imageAlt: "道路と現在地の印、指定緊急避難場所と指定避難所の二つの案内標識が並ぶ避難先さがし",
+    name: "避難先さがし",
+    slug: "hinan-saki",
+    tag: "目的を選ぶ。近い避難先が見える。",
+    url: "https://hinan-saki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

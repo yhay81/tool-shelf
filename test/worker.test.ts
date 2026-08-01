@@ -110,8 +110,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="yasumi-kumi"');
     expect(html).toContain('data-tool="seibun-narabe"');
     expect(html).toContain('data-tool="machi-npo"');
-    expect(html).toContain("74 TOOLS");
-    expect(html).toContain("74件");
+    expect(html).toContain('data-tool="hinan-saki"');
+    expect(html).toContain("75 TOOLS");
+    expect(html).toContain("75件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -168,7 +169,7 @@ describe("worker", () => {
     expect(html).toContain("議事ひろい");
     expect(html).toContain("法令引き");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":74');
+    expect(html).toContain('"numberOfItems":75');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -363,6 +364,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://machi-npo.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://hinan-saki.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -1178,6 +1182,28 @@ describe("worker", () => {
     expect(html).toContain("内閣府行政入力情報・49,062法人");
   });
 
+  it("publishes the 避難先さがし detail page with its route-sign visual", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/hinan-saki",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain(
+      "<title>目的を選ぶ。近い避難先が見える。 | 避難先さがし | Tool Shelf</title>",
+    );
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/hinan-saki" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://hinan-saki.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://hinan-saki.yhay81.com"');
+    expect(html).toContain("国土地理院公式データ・198,595件");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -1186,8 +1212,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(76);
-    expect(new Set(locations)).toHaveProperty("size", 76);
+    expect(locations).toHaveLength(77);
+    expect(new Set(locations)).toHaveProperty("size", 77);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1234,6 +1260,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/yasumi-kumi");
     expect(locations).toContain("https://tools.yhay81.com/tools/seibun-narabe");
     expect(locations).toContain("https://tools.yhay81.com/tools/machi-npo");
+    expect(locations).toContain("https://tools.yhay81.com/tools/hinan-saki");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
