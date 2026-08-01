@@ -772,6 +772,18 @@ export const tools = [
     tag: "事件番号から、原文へ。",
     url: "https://hanrei-dana.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "全国12万超の郵便番号を、番号・漢字住所・カナのどちらからでも引き、宛名書き用にコピーする。",
+    facts: ["120,682郵便番号・47都道府県", "検索語を保存しない・登録なし"],
+    image: "https://yubin-hiki.yhay81.com/og.svg",
+    imageAlt: "赤い郵便番号枠と切手のある封筒から、郵便番号と住所の宛名票が現れる郵便引き",
+    name: "郵便引き",
+    slug: "yubin-hiki",
+    tag: "番号と住所を、どちらからでも。",
+    url: "https://yubin-hiki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
