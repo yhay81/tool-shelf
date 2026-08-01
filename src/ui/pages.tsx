@@ -784,6 +784,18 @@ export const tools = [
     tag: "番号と住所を、どちらからでも。",
     url: "https://yubin-hiki.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "国会会議録をことば・発言者・院・期間から探し、短い該当箇所と出典をふせんのように残す。",
+    facts: ["1947年以降・国会会議録", "最大320文字の発言札・登録なし"],
+    image: "https://giji-hiroi.yhay81.com/og.svg",
+    imageAlt: "半円形の議場と演壇の前に、発言の短い記録札が並ぶ議事ひろい",
+    name: "議事ひろい",
+    slug: "giji-hiroi",
+    tag: "ことばから、発言へ。",
+    url: "https://giji-hiroi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
