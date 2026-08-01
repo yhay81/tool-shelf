@@ -880,6 +880,18 @@ export const tools = [
     tag: "題名から、読むべき一本へ。",
     url: "https://ronbun-hiki.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "文部科学省の学校コード60,285件を、都道府県、学校種、設置区分、学校名、所在地から探し、複数校まとめてコピーする。",
+    facts: ["文部科学省公式一覧・60,285校", "現役・廃止・移行先コードを分離"],
+    image: "https://gakko-code.yhay81.com/og.svg",
+    imageAlt: "学校種の異なる校舎と13桁の学校コード札を並べた学校コード引き",
+    name: "学校コード引き",
+    slug: "gakko-code",
+    tag: "学校を選ぶ。コード札がそろう。",
+    url: "https://gakko-code.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
