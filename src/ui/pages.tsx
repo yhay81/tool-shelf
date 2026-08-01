@@ -832,6 +832,18 @@ export const tools = [
     tag: "休む日を置く。連休がつながる。",
     url: "https://yasumi-kumi.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "文部科学省の2,538食品から14成分を探し、100g値と実際の量を最大4食品まで同じ台で比べる。",
+    facts: ["文部科学省公式成分表・2,538食品", "検索語は送信しない・比較は端末内"],
+    image: "https://seibun-narabe.yhay81.com/og.svg",
+    imageAlt: "食品を秤のトレイへ置き、栄養成分の棒を同じ目盛りで比べる成分ならべ",
+    name: "成分ならべ",
+    slug: "seibun-narabe",
+    tag: "食品を置く。成分の違いが見える。",
+    url: "https://seibun-narabe.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
