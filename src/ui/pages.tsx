@@ -820,6 +820,18 @@ export const tools = [
     tag: "本を、確かな一枚へ。",
     url: "https://shoshi-hiki.yhay81.com",
   },
+  {
+    categories: "plan organize",
+    description:
+      "内閣府の2026年・2027年の祝日と週末を見ながら、1〜5日の休暇でつくれる連休候補を比べて予定へ持ち出す。",
+    facts: ["内閣府公式祝日・2026／2027年", "休暇は端末内保存・ICS出力"],
+    image: "https://yasumi-kumi.yhay81.com/og.svg",
+    imageAlt: "年次テープ、祝日入りカレンダー、休暇札をつないで連休を組む休み組み",
+    name: "休み組み",
+    slug: "yasumi-kumi",
+    tag: "休む日を置く。連休がつながる。",
+    url: "https://yasumi-kumi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
