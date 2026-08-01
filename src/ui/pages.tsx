@@ -737,6 +737,18 @@ export const tools = [
     tag: "9桁と、継ぎたい因子だけ。",
     url: "https://inshi-fuda.yhay81.com",
   },
+  {
+    categories: "organize share",
+    description:
+      "ライブと小さなイベントの取り置き予約を一つのURLに集め、出演者別の集計と当日受付名簿へつなぐ。",
+    facts: ["予約者アカウント・決済なし", "代理登録・来場チェック・CSV"],
+    image: "https://uketsuke-fuda.yhay81.com/og.svg",
+    imageAlt: "取り置き半券が、予約名と枚数を並べた当日受付名簿へつながる受付札",
+    name: "受付札",
+    slug: "uketsuke-fuda",
+    tag: "予約は一枚、当日は名簿。",
+    url: "https://uketsuke-fuda.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

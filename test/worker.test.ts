@@ -100,8 +100,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="shisou-to"');
     expect(html).toContain('data-tool="heya-to"');
     expect(html).toContain('data-tool="inshi-fuda"');
-    expect(html).toContain("64 TOOLS");
-    expect(html).toContain("64件");
+    expect(html).toContain('data-tool="uketsuke-fuda"');
+    expect(html).toContain("65 TOOLS");
+    expect(html).toContain("65件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -152,8 +153,9 @@ describe("worker", () => {
     expect(html).toContain("音源控え");
     expect(html).toContain("部屋灯");
     expect(html).toContain("因子札");
+    expect(html).toContain("受付札");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":64');
+    expect(html).toContain('"numberOfItems":65');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -187,6 +189,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/shisou-to");
     expect(html).toContain("https://tools.yhay81.com/tools/heya-to");
     expect(html).toContain("https://tools.yhay81.com/tools/inshi-fuda");
+    expect(html).toContain("https://tools.yhay81.com/tools/uketsuke-fuda");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -256,6 +259,9 @@ describe("worker", () => {
     expect(response.headers.get("content-security-policy")).toContain("https://heya-to.yhay81.com");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://inshi-fuda.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://uketsuke-fuda.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
@@ -944,6 +950,26 @@ describe("worker", () => {
     expect(html).toContain("距離・脚質・因子で検索");
   });
 
+  it("publishes the 受付札 detail page with its ticket-to-roster visual", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/uketsuke-fuda",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>予約は一枚、当日は名簿。 | 受付札 | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/uketsuke-fuda" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://uketsuke-fuda.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://uketsuke-fuda.yhay81.com"');
+    expect(html).toContain("代理登録・来場チェック・CSV");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -952,8 +978,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(66);
-    expect(new Set(locations)).toHaveProperty("size", 66);
+    expect(locations).toHaveLength(67);
+    expect(new Set(locations)).toHaveProperty("size", 67);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -990,6 +1016,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/shisou-to");
     expect(locations).toContain("https://tools.yhay81.com/tools/heya-to");
     expect(locations).toContain("https://tools.yhay81.com/tools/inshi-fuda");
+    expect(locations).toContain("https://tools.yhay81.com/tools/uketsuke-fuda");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
