@@ -796,6 +796,18 @@ export const tools = [
     tag: "ことばから、発言へ。",
     url: "https://giji-hiroi.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "e-Govの現行法令を法令名・略称・読み・本文のことばから探し、改正情報と公式原文へ進む。",
+    facts: ["現行約9千法令・公式API", "本文の該当箇所・登録なし"],
+    image: "https://hourei-hiki.yhay81.com/og.svg",
+    imageAlt: "法令の本棚と開いた原文に、現行の索引札が差し込まれた法令引き",
+    name: "法令引き",
+    slug: "hourei-hiki",
+    tag: "名前でも、条文のことばでも。",
+    url: "https://hourei-hiki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
