@@ -592,6 +592,18 @@ export const tools = [
     tag: "遊び方の合う席へ",
     url: "https://nakama-fuda.yhay81.com",
   },
+  {
+    categories: "find plan",
+    description:
+      "学芸員・文化財・ミュージアム求人を、地域、館種、雇用、資格、専門業務、締切から探す。",
+    facts: ["登録・広告なし", "編集鍵・報告保護"],
+    image: "https://kan-shigoto.yhay81.com/og.png",
+    imageAlt: "博物館の展示壁に地域、専門、締切の求人札が並び、深緑の扉が次の展示室へ開く館しごと",
+    name: "館しごと",
+    slug: "kan-shigoto",
+    tag: "締切から、次の展示室へ。",
+    url: "https://kan-shigoto.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

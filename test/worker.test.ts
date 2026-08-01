@@ -88,8 +88,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="iriguchi-cho"');
     expect(html).toContain('data-tool="relay-goyomi"');
     expect(html).toContain('data-tool="nakama-fuda"');
-    expect(html).toContain("52 TOOLS");
-    expect(html).toContain("52件");
+    expect(html).toContain('data-tool="kan-shigoto"');
+    expect(html).toContain("53 TOOLS");
+    expect(html).toContain("53件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -130,8 +131,9 @@ describe("worker", () => {
     expect(html).toContain("入口帖");
     expect(html).toContain("リレー暦");
     expect(html).toContain("仲間札");
+    expect(html).toContain("館しごと");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":52');
+    expect(html).toContain('"numberOfItems":53');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -153,6 +155,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/iriguchi-cho");
     expect(html).toContain("https://tools.yhay81.com/tools/relay-goyomi");
     expect(html).toContain("https://tools.yhay81.com/tools/nakama-fuda");
+    expect(html).toContain("https://tools.yhay81.com/tools/kan-shigoto");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -188,6 +191,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://nakama-fuda.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://kan-shigoto.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
@@ -636,6 +642,26 @@ describe("worker", () => {
     expect(html).toContain("編集鍵・報告保護");
   });
 
+  it("publishes the 館しごと detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/kan-shigoto",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>締切から、次の展示室へ。 | 館しごと | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/kan-shigoto" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://kan-shigoto.yhay81.com/og.png" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://kan-shigoto.yhay81.com"');
+    expect(html).toContain("編集鍵・報告保護");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -644,8 +670,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(54);
-    expect(new Set(locations)).toHaveProperty("size", 54);
+    expect(locations).toHaveLength(55);
+    expect(new Set(locations)).toHaveProperty("size", 55);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -670,6 +696,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/iriguchi-cho");
     expect(locations).toContain("https://tools.yhay81.com/tools/relay-goyomi");
     expect(locations).toContain("https://tools.yhay81.com/tools/nakama-fuda");
+    expect(locations).toContain("https://tools.yhay81.com/tools/kan-shigoto");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
