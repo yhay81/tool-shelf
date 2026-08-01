@@ -112,6 +112,7 @@ $OutboundUsers = [int]$Row.outbound_users
         heya_to = [int]$Row.heya_to
         inshi_fuda = [int]$Row.inshi_fuda
         uketsuke_fuda = [int]$Row.uketsuke_fuda
+        shunji = [int]$Row.shunji
     }
     rates = [ordered]@{
         outbound_percent = Get-Percent $OutboundUsers $Users

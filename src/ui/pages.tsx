@@ -749,6 +749,17 @@ export const tools = [
     tag: "予約は一枚、当日は名簿。",
     url: "https://uketsuke-fuda.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description: "日本語・英語を広告なしですぐ引き、見つけた語をこの端末だけの単語札へ残す。",
+    facts: ["21万語超・語形／読み／英語全文検索", "検索語を保存しない・登録なし"],
+    image: "https://shunji.yhay81.com/og.svg",
+    imageAlt: "開いた辞書から余白の辞書カードが現れ、単語札が重なる瞬辞",
+    name: "瞬辞",
+    slug: "shunji",
+    tag: "打つ。ひらく。残す。",
+    url: "https://shunji.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
