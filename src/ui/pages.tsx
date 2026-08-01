@@ -629,6 +629,17 @@ export const tools = [
     tag: "授乳も、おむつ替えも、行く前に。",
     url: "https://oyako-madori.yhay81.com",
   },
+  {
+    categories: "create share",
+    description: "カード画像なしで、自分のデッキ表と回し方を公開・保全し、三種類の反応を受け取る。",
+    facts: ["登録・広告なし", "管理鍵で編集・削除"],
+    image: "https://deck-watashi.yhay81.com/og.png",
+    imageAlt: "三つのデッキ束と回し方の紙が真鍮の受け渡しレールで保管棚につながるデッキ渡し",
+    name: "デッキ渡し",
+    slug: "deck-watashi",
+    tag: "レシピを、次の卓へ。",
+    url: "https://deck-watashi.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
