@@ -868,6 +868,18 @@ export const tools = [
     tag: "目的を選ぶ。近い避難先が見える。",
     url: "https://hinan-saki.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "Crossrefの公開メタデータから、テーマ・題名・著者・発表年で論文を探し、DOIと引用用の書誌へ進む。",
+    facts: ["Crossref公開メタデータ・論文検索", "抄録は収録しない・検索条件は保存しない"],
+    image: "https://ronbun-hiki.yhay81.com/og.svg",
+    imageAlt: "雑誌の背表紙と論文用紙、DOIの印、引用票を並べた論文引き",
+    name: "論文引き",
+    slug: "ronbun-hiki",
+    tag: "題名から、読むべき一本へ。",
+    url: "https://ronbun-hiki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
