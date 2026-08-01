@@ -653,6 +653,19 @@ export const tools = [
     tag: "つくる文で、見くらべる。",
     url: "https://ji-kurabe.yhay81.com",
   },
+  {
+    categories: "create organize",
+    description:
+      "Excel数式を端末内だけでほどき、関数の入れ子、引数、セル参照、確認候補を見える形にする。",
+    facts: ["数式・ブックを送信しない", "10関数・7エラーの公式札"],
+    image: "https://sushiki-hodoki.yhay81.com/og.png",
+    imageAlt:
+      "紙テープの数式が解析機を通り、入れ子トレー、セル参照地図、確認札へ分かれる数式ほどき",
+    name: "数式ほどき",
+    slug: "sushiki-hodoki",
+    tag: "数式を、見える手順に。",
+    url: "https://sushiki-hodoki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
