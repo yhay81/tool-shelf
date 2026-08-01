@@ -760,6 +760,18 @@ export const tools = [
     tag: "打つ。ひらく。残す。",
     url: "https://shunji.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "裁判所が公開する2025年以降の裁判例1,457件を、事件番号・事件名・裁判所・分類から探して公式原文へ進む。",
+    facts: ["1,457件・2025年以降", "端末内の調べる棚・登録なし"],
+    image: "https://hanrei-dana.yhay81.com/og.svg",
+    imageAlt: "判例の記録札と原文札が濃緑の書類棚に収まる判例棚",
+    name: "判例棚",
+    slug: "hanrei-dana",
+    tag: "事件番号から、原文へ。",
+    url: "https://hanrei-dana.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
