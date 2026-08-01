@@ -61,5 +61,6 @@ SELECT
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'shutten-fuda' THEN session_id END) AS shutten_fuda,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'oyako-madori' THEN session_id END) AS oyako_madori,
   COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'deck-watashi' THEN session_id END) AS deck_watashi,
-  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'ji-kurabe' THEN session_id END) AS ji_kurabe
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'ji-kurabe' THEN session_id END) AS ji_kurabe,
+  COUNT(DISTINCT CASE WHEN name = 'opened' AND tool = 'sushiki-hodoki' THEN session_id END) AS sushiki_hodoki
 FROM product_events;

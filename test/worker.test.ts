@@ -93,8 +93,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="oyako-madori"');
     expect(html).toContain('data-tool="deck-watashi"');
     expect(html).toContain('data-tool="ji-kurabe"');
-    expect(html).toContain("57 TOOLS");
-    expect(html).toContain("57件");
+    expect(html).toContain('data-tool="sushiki-hodoki"');
+    expect(html).toContain("58 TOOLS");
+    expect(html).toContain("58件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -140,8 +141,9 @@ describe("worker", () => {
     expect(html).toContain("おやこ間取り");
     expect(html).toContain("デッキ渡し");
     expect(html).toContain("字くらべ");
+    expect(html).toContain("数式ほどき");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":57');
+    expect(html).toContain('"numberOfItems":58');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -168,6 +170,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/oyako-madori");
     expect(html).toContain("https://tools.yhay81.com/tools/deck-watashi");
     expect(html).toContain("https://tools.yhay81.com/tools/ji-kurabe");
+    expect(html).toContain("https://tools.yhay81.com/tools/sushiki-hodoki");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -218,6 +221,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://ji-kurabe.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://sushiki-hodoki.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
@@ -768,6 +774,26 @@ describe("worker", () => {
     expect(html).toContain("6書体・OFL原文付き");
   });
 
+  it("publishes the 数式ほどき detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/sushiki-hodoki",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>数式を、見える手順に。 | 数式ほどき | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/sushiki-hodoki" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://sushiki-hodoki.yhay81.com/og.png" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://sushiki-hodoki.yhay81.com"');
+    expect(html).toContain("10関数・7エラーの公式札");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -776,8 +802,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(59);
-    expect(new Set(locations)).toHaveProperty("size", 59);
+    expect(locations).toHaveLength(60);
+    expect(new Set(locations)).toHaveProperty("size", 60);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -807,6 +833,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/oyako-madori");
     expect(locations).toContain("https://tools.yhay81.com/tools/deck-watashi");
     expect(locations).toContain("https://tools.yhay81.com/tools/ji-kurabe");
+    expect(locations).toContain("https://tools.yhay81.com/tools/sushiki-hodoki");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
