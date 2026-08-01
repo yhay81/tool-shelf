@@ -94,8 +94,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="deck-watashi"');
     expect(html).toContain('data-tool="ji-kurabe"');
     expect(html).toContain('data-tool="sushiki-hodoki"');
-    expect(html).toContain("58 TOOLS");
-    expect(html).toContain("58件");
+    expect(html).toContain('data-tool="shiai-ban"');
+    expect(html).toContain("59 TOOLS");
+    expect(html).toContain("59件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -142,8 +143,9 @@ describe("worker", () => {
     expect(html).toContain("デッキ渡し");
     expect(html).toContain("字くらべ");
     expect(html).toContain("数式ほどき");
+    expect(html).toContain("試合盤");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":58');
+    expect(html).toContain('"numberOfItems":59');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -171,6 +173,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/deck-watashi");
     expect(html).toContain("https://tools.yhay81.com/tools/ji-kurabe");
     expect(html).toContain("https://tools.yhay81.com/tools/sushiki-hodoki");
+    expect(html).toContain("https://tools.yhay81.com/tools/shiai-ban");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -224,6 +227,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://sushiki-hodoki.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://shiai-ban.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
@@ -794,6 +800,26 @@ describe("worker", () => {
     expect(html).toContain("10関数・7エラーの公式札");
   });
 
+  it("publishes the 試合盤 detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/shiai-ban",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>次の笛まで、ひと目で。 | 試合盤 | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/shiai-ban" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://shiai-ban.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://shiai-ban.yhay81.com"');
+    expect(html).toContain("双方一致で得点確定");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -802,8 +828,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(60);
-    expect(new Set(locations)).toHaveProperty("size", 60);
+    expect(locations).toHaveLength(61);
+    expect(new Set(locations)).toHaveProperty("size", 61);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -834,6 +860,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/deck-watashi");
     expect(locations).toContain("https://tools.yhay81.com/tools/ji-kurabe");
     expect(locations).toContain("https://tools.yhay81.com/tools/sushiki-hodoki");
+    expect(locations).toContain("https://tools.yhay81.com/tools/shiai-ban");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
