@@ -106,8 +106,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="yubin-hiki"');
     expect(html).toContain('data-tool="giji-hiroi"');
     expect(html).toContain('data-tool="hourei-hiki"');
-    expect(html).toContain("70 TOOLS");
-    expect(html).toContain("70件");
+    expect(html).toContain('data-tool="shoshi-hiki"');
+    expect(html).toContain("71 TOOLS");
+    expect(html).toContain("71件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -164,7 +165,7 @@ describe("worker", () => {
     expect(html).toContain("議事ひろい");
     expect(html).toContain("法令引き");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":70');
+    expect(html).toContain('"numberOfItems":71');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -1084,6 +1085,26 @@ describe("worker", () => {
     expect(html).toContain("現行約9千法令・公式API");
   });
 
+  it("publishes the 書誌引き detail page with its card-catalogue visual", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/shoshi-hiki",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>本を、確かな一枚へ。 | 書誌引き | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/shoshi-hiki" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://shoshi-hiki.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://shoshi-hiki.yhay81.com"');
+    expect(html).toContain("国立国会図書館作成書誌・図書");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -1092,8 +1113,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(72);
-    expect(new Set(locations)).toHaveProperty("size", 72);
+    expect(locations).toHaveLength(73);
+    expect(new Set(locations)).toHaveProperty("size", 73);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1136,6 +1157,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/yubin-hiki");
     expect(locations).toContain("https://tools.yhay81.com/tools/giji-hiroi");
     expect(locations).toContain("https://tools.yhay81.com/tools/hourei-hiki");
+    expect(locations).toContain("https://tools.yhay81.com/tools/shoshi-hiki");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {

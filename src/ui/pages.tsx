@@ -808,6 +808,18 @@ export const tools = [
     tag: "名前でも、条文のことばでも。",
     url: "https://hourei-hiki.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "タイトル・著者・ISBNから国立国会図書館の完成書誌を探し、版を見分けて公式記録と引用用の書誌情報へ進む。",
+    facts: ["国立国会図書館作成書誌・図書", "書誌コピー・端末内カード箱"],
+    image: "https://shoshi-hiki.yhay81.com/og.svg",
+    imageAlt: "本の背表紙と木製カード目録から、書誌カードが引き出される書誌引き",
+    name: "書誌引き",
+    slug: "shoshi-hiki",
+    tag: "本を、確かな一枚へ。",
+    url: "https://shoshi-hiki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
