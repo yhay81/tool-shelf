@@ -617,6 +617,18 @@ export const tools = [
     tag: "次の売り場を、締切から。",
     url: "https://shutten-fuda.yhay81.com",
   },
+  {
+    categories: "find plan",
+    description: "東京都心の授乳室・おむつ交換スペースを、駅、館内位置、設備、公式確認日から探す。",
+    facts: ["登録・広告なし", "現在地・住所不要"],
+    image: "https://oyako-madori.yhay81.com/og.png",
+    imageAlt:
+      "ベビーカーで通れる間取りに授乳室、おむつ交換台、手洗い、調乳用お湯と確認日が描かれたおやこ間取り",
+    name: "おやこ間取り",
+    slug: "oyako-madori",
+    tag: "授乳も、おむつ替えも、行く前に。",
+    url: "https://oyako-madori.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
