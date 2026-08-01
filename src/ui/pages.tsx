@@ -844,6 +844,18 @@ export const tools = [
     tag: "食品を置く。成分の違いが見える。",
     url: "https://seibun-narabe.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "内閣府の行政入力情報から、都道府県と20の活動分野、法人名、目的、市区町村でNPO法人を探して公式記録へ進む。",
+    facts: ["内閣府行政入力情報・49,062法人", "都道府県別読込・検索語は送信しない"],
+    image: "https://machi-npo.yhay81.com/og.svg",
+    imageAlt: "日本地図のピンと活動分野別の法人カード箱から探すまちのNPO",
+    name: "まちのNPO",
+    slug: "machi-npo",
+    tag: "地域から、活動する法人を見つける。",
+    url: "https://machi-npo.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
