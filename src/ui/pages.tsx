@@ -666,6 +666,18 @@ export const tools = [
     tag: "数式を、見える手順に。",
     url: "https://sushiki-hodoki.yhay81.com",
   },
+  {
+    categories: "play organize",
+    description:
+      "一日リーグをチーム名だけで受付し、全試合の日程、双方確認した得点、順位を一つの会場盤で進める。",
+    facts: ["選手名・連絡先を集めない", "双方一致で得点確定"],
+    image: "https://shiai-ban.yhay81.com/og.svg",
+    imageAlt: "緑のピッチ、次の二試合、得点盤、順位表が一つの会場盤につながる試合盤",
+    name: "試合盤",
+    slug: "shiai-ban",
+    tag: "次の笛まで、ひと目で。",
+    url: "https://shiai-ban.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
