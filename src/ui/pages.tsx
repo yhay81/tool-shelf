@@ -678,6 +678,18 @@ export const tools = [
     tag: "次の笛まで、ひと目で。",
     url: "https://shiai-ban.yhay81.com",
   },
+  {
+    categories: "create organize",
+    description:
+      "制作物で使う音源の配布元、確認日、利用条件、クレジットを案件ごとに端末内で整理・書き出す。",
+    facts: ["入力内容を送信しない", "クレジット・CSV・JSON出力"],
+    image: "https://ongen-hikae.yhay81.com/og.png",
+    imageAlt: "案件、音源、利用条件、クレジットの四つの機器が色分けしたケーブルでつながる音源控え",
+    name: "音源控え",
+    slug: "ongen-hikae",
+    tag: "使った音に、根拠を添える。",
+    url: "https://ongen-hikae.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
