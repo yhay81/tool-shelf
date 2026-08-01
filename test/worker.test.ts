@@ -91,8 +91,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="kan-shigoto"');
     expect(html).toContain('data-tool="shutten-fuda"');
     expect(html).toContain('data-tool="oyako-madori"');
-    expect(html).toContain("55 TOOLS");
-    expect(html).toContain("55件");
+    expect(html).toContain('data-tool="deck-watashi"');
+    expect(html).toContain("56 TOOLS");
+    expect(html).toContain("56件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -136,8 +137,9 @@ describe("worker", () => {
     expect(html).toContain("館しごと");
     expect(html).toContain("出店札");
     expect(html).toContain("おやこ間取り");
+    expect(html).toContain("デッキ渡し");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":55');
+    expect(html).toContain('"numberOfItems":56');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -162,6 +164,7 @@ describe("worker", () => {
     expect(html).toContain("https://tools.yhay81.com/tools/kan-shigoto");
     expect(html).toContain("https://tools.yhay81.com/tools/shutten-fuda");
     expect(html).toContain("https://tools.yhay81.com/tools/oyako-madori");
+    expect(html).toContain("https://tools.yhay81.com/tools/deck-watashi");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://mingle-frame.yusuke8h.workers.dev",
     );
@@ -206,6 +209,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://oyako-madori.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://deck-watashi.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
@@ -716,6 +722,26 @@ describe("worker", () => {
     expect(html).toContain("現在地・住所不要");
   });
 
+  it("publishes the デッキ渡し detail page with its visual and direct destination", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/deck-watashi",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>レシピを、次の卓へ。 | デッキ渡し | Tool Shelf</title>");
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/deck-watashi" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://deck-watashi.yhay81.com/og.png" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://deck-watashi.yhay81.com"');
+    expect(html).toContain("管理鍵で編集・削除");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -724,8 +750,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(57);
-    expect(new Set(locations)).toHaveProperty("size", 57);
+    expect(locations).toHaveLength(58);
+    expect(new Set(locations)).toHaveProperty("size", 58);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -753,6 +779,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/kan-shigoto");
     expect(locations).toContain("https://tools.yhay81.com/tools/shutten-fuda");
     expect(locations).toContain("https://tools.yhay81.com/tools/oyako-madori");
+    expect(locations).toContain("https://tools.yhay81.com/tools/deck-watashi");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
