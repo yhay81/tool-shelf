@@ -101,8 +101,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="heya-to"');
     expect(html).toContain('data-tool="inshi-fuda"');
     expect(html).toContain('data-tool="uketsuke-fuda"');
-    expect(html).toContain("65 TOOLS");
-    expect(html).toContain("65件");
+    expect(html).toContain('data-tool="shunji"');
+    expect(html).toContain("66 TOOLS");
+    expect(html).toContain("66件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -155,7 +156,7 @@ describe("worker", () => {
     expect(html).toContain("因子札");
     expect(html).toContain("受付札");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":65');
+    expect(html).toContain('"numberOfItems":66');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -263,6 +264,7 @@ describe("worker", () => {
     expect(response.headers.get("content-security-policy")).toContain(
       "https://uketsuke-fuda.yhay81.com",
     );
+    expect(response.headers.get("content-security-policy")).toContain("https://shunji.yhay81.com");
     expect(response.headers.get("content-security-policy")).toContain(
       "https://heart-board.yhay81.com",
     );
@@ -970,6 +972,24 @@ describe("worker", () => {
     expect(html).toContain("代理登録・来場チェック・CSV");
   });
 
+  it("publishes the 瞬辞 detail page with its dictionary-card visual", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/shunji",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain("<title>打つ。ひらく。残す。 | 瞬辞 | Tool Shelf</title>");
+    expect(html).toContain('<link href="https://tools.yhay81.com/tools/shunji" rel="canonical"/>');
+    expect(html).toContain(
+      '<meta content="https://shunji.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://shunji.yhay81.com"');
+    expect(html).toContain("21万語超・語形／読み／英語全文検索");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -978,8 +998,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(67);
-    expect(new Set(locations)).toHaveProperty("size", 67);
+    expect(locations).toHaveLength(68);
+    expect(new Set(locations)).toHaveProperty("size", 68);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1017,6 +1037,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/heya-to");
     expect(locations).toContain("https://tools.yhay81.com/tools/inshi-fuda");
     expect(locations).toContain("https://tools.yhay81.com/tools/uketsuke-fuda");
+    expect(locations).toContain("https://tools.yhay81.com/tools/shunji");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
