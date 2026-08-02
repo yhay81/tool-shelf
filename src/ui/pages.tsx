@@ -892,6 +892,18 @@ export const tools = [
     tag: "学校を選ぶ。コード札がそろう。",
     url: "https://gakko-code.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "日本標準産業分類2,128コードを、事業内容・分類名・コードから探し、大・中・小・細分類の道筋を確かめてまとめてコピーする。",
+    facts: ["e-Stat公式分類・2,128コード", "大・中・小・細分類を一続きで表示"],
+    image: "https://sangyo-code.yhay81.com/og.svg",
+    imageAlt: "農地、工場、店舗、通信塔、医療施設から細分類コードへつながる産業の街",
+    name: "産業分類引き",
+    slug: "sangyo-code",
+    tag: "仕事をたどる。分類コードが決まる。",
+    url: "https://sangyo-code.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
