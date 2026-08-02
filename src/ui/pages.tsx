@@ -1159,6 +1159,19 @@ export const tools = [
     tag: "地域を選ぶ。新しく届いた求人と申込を並べる。",
     url: "https://chiiki-shinki-bairitsu.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、全国・47労働局の職業計の就職率を、現行表の2023〜2025年度、3つの常用雇用区分で探し、元件数とともに最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・864元値", "48地域・3雇用区分を4地域比較"],
+    image: "https://chiiki-shushoku.yhay81.com/og.svg",
+    imageAlt:
+      "新規求職申込ファイルが受付を通り、就職確認印の付いたファイルと就職率票になる地域就職率",
+    name: "地域就職率",
+    slug: "chiiki-shushoku",
+    tag: "地域を選ぶ。申込から就職確認までを並べる。",
+    url: "https://chiiki-shushoku.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

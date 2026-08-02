@@ -111,6 +111,7 @@ const toolNames = new Set([
   "sangyo-joken",
   "chiiki-bairitsu",
   "chiiki-shinki-bairitsu",
+  "chiiki-shushoku",
 ]);
 const sessionIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const canonicalHostname = "tools.yhay81.com";
