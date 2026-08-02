@@ -7,6 +7,7 @@ const additionalImageOrigins = [
   "https://kyushoku-nenrei.yhay81.com",
   "https://shokugyo-chingin.yhay81.com",
   "https://shokugyo-bairitsu.yhay81.com",
+  "https://shokugyo-joken.yhay81.com",
 ];
 const csp = [
   "default-src 'self'",
