@@ -929,6 +929,18 @@ export const tools = [
     tag: "することを探す。3桁へたどる。",
     url: "https://shokugyo-code.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "2026年地価公示25,565標準地を、都道府県・住所・駅・用途から探し、1㎡価格、前年比、土地の条件を最大4地点で比べる。",
+    facts: ["国土交通省公式データ・25,565地点", "2026年1月1日時点・4地点まで比較"],
+    image: "https://chika-kohji.yhay81.com/og.svg",
+    imageAlt: "道路で区切られた住宅地と商業地、駅、1平方メートル価格の比較札を並べた地価公示くらべ",
+    name: "地価公示くらべ",
+    slug: "chika-kohji",
+    tag: "場所を選ぶ。価格の根拠を並べる。",
+    url: "https://chika-kohji.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

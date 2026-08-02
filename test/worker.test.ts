@@ -116,8 +116,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="sangyo-code"');
     expect(html).toContain('data-tool="jichitai-code"');
     expect(html).toContain('data-tool="shokugyo-code"');
-    expect(html).toContain("80 TOOLS");
-    expect(html).toContain("80件");
+    expect(html).toContain('data-tool="chika-kohji"');
+    expect(html).toContain("81 TOOLS");
+    expect(html).toContain("81件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -174,7 +175,7 @@ describe("worker", () => {
     expect(html).toContain("議事ひろい");
     expect(html).toContain("法令引き");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":80');
+    expect(html).toContain('"numberOfItems":81');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -1317,6 +1318,28 @@ describe("worker", () => {
     expect(html).toContain("e-Stat公式分類・415コード");
   });
 
+  it("publishes the 地価公示くらべ detail page with its parcel comparison visual", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/chika-kohji",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain(
+      "<title>場所を選ぶ。価格の根拠を並べる。 | 地価公示くらべ | Tool Shelf</title>",
+    );
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/chika-kohji" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://chika-kohji.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://chika-kohji.yhay81.com"');
+    expect(html).toContain("国土交通省公式データ・25,565地点");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -1325,8 +1348,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
-    expect(locations).toHaveLength(82);
-    expect(new Set(locations)).toHaveProperty("size", 82);
+    expect(locations).toHaveLength(83);
+    expect(new Set(locations)).toHaveProperty("size", 83);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1379,6 +1402,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/sangyo-code");
     expect(locations).toContain("https://tools.yhay81.com/tools/jichitai-code");
     expect(locations).toContain("https://tools.yhay81.com/tools/shokugyo-code");
+    expect(locations).toContain("https://tools.yhay81.com/tools/chika-kohji");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
