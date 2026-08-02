@@ -134,8 +134,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="shokugyo-jusoku"');
     expect(html).toContain('data-tool="sangyo-joken"');
     expect(html).toContain('data-tool="chiiki-bairitsu"');
-    expect(html).toContain("98 TOOLS");
-    expect(html).toContain("98件");
+    expect(html).toContain('data-tool="chiiki-shinki-bairitsu"');
+    expect(html).toContain("99 TOOLS");
+    expect(html).toContain("99件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -192,7 +193,7 @@ describe("worker", () => {
     expect(html).toContain("議事ひろい");
     expect(html).toContain("法令引き");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":98');
+    expect(html).toContain('"numberOfItems":99');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -441,6 +442,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://chiiki-bairitsu.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://chiiki-shinki-bairitsu.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -1782,6 +1786,28 @@ describe("worker", () => {
     expect(html).toContain("厚生労働省公式統計・864元値");
   });
 
+  it("publishes the 地域新規求人倍率 detail page with its intake tickets", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/chiiki-shinki-bairitsu",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain(
+      "<title>地域を選ぶ。新しく届いた求人と申込を並べる。 | 地域新規求人倍率 | Tool Shelf</title>",
+    );
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/chiiki-shinki-bairitsu" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://chiiki-shinki-bairitsu.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://chiiki-shinki-bairitsu.yhay81.com"');
+    expect(html).toContain("厚生労働省公式統計・864元値");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -1790,8 +1816,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=300");
-    expect(locations).toHaveLength(100);
-    expect(new Set(locations)).toHaveProperty("size", 100);
+    expect(locations).toHaveLength(101);
+    expect(new Set(locations)).toHaveProperty("size", 101);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1862,6 +1888,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/shokugyo-jusoku");
     expect(locations).toContain("https://tools.yhay81.com/tools/sangyo-joken");
     expect(locations).toContain("https://tools.yhay81.com/tools/chiiki-bairitsu");
+    expect(locations).toContain("https://tools.yhay81.com/tools/chiiki-shinki-bairitsu");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
