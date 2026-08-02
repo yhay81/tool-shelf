@@ -941,6 +941,18 @@ export const tools = [
     tag: "場所を選ぶ。価格の根拠を並べる。",
     url: "https://chika-kohji.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "国土交通省の2024年度駅別乗降客数7,739公表単位を、駅名・事業者・路線から探し、2011〜2024年度の推移を最大4件で比べる。",
+    facts: ["国土交通省公式データ・7,739公表単位", "2011〜2024年度・4件まで比較"],
+    image: "https://eki-joko.yhay81.com/og.svg",
+    imageAlt: "駅のホーム、列車、改札と、14年分の乗降客数を並べた駅乗降くらべ",
+    name: "駅乗降くらべ",
+    slug: "eki-joko",
+    tag: "駅を探す。14年を同じホームで比べる。",
+    url: "https://eki-joko.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
