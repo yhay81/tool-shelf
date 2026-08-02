@@ -11,7 +11,7 @@ describe("tool metrics coverage", () => {
   it("builds scalable outbound aggregation for every published tool", () => {
     const slugs = [...pages.matchAll(/slug: "([a-z0-9-]+)"/g)].map((match) => match[1]);
 
-    expect(slugs).toHaveLength(80);
+    expect(slugs).toHaveLength(81);
     expect(metricsSql).toContain("AS outbound_users_7d");
     expect(toolMetricsSql).toContain("GROUP BY tool");
     expect(toolMetricsSql).toContain("COUNT(DISTINCT session_id) AS users");
