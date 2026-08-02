@@ -1,5 +1,6 @@
 import { createMiddleware } from "hono/factory";
 
+const additionalImageOrigins = ["https://kyujin-chingin.yhay81.com"];
 const csp = [
   "default-src 'self'",
   "base-uri 'none'",
@@ -11,7 +12,13 @@ const csp = [
   "object-src 'none'",
   "script-src 'self'",
   "style-src 'self'",
-].join("; ");
+]
+  .map((directive) =>
+    directive.startsWith("img-src")
+      ? `${directive} ${additionalImageOrigins.join(" ")}`
+      : directive,
+  )
+  .join("; ");
 
 export const securityHeaders = createMiddleware(async (c, next) => {
   await next();

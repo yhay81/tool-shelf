@@ -990,6 +990,18 @@ export const tools = [
     tag: "地域を選ぶ。時給と発効日を並べる。",
     url: "https://saitei-chingin.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の2025年度平均求人賃金を、全国・47労働局、19産業、雇用区分、受理地・就業地から探し、最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・912組", "2024・2025年度、4表を地域比較"],
+    image: "https://kyujin-chingin.yhay81.com/og.svg",
+    imageAlt: "求人掲示板、産業タブ、2024年と2025年の賃金目盛りを並べた求人賃金くらべ",
+    name: "求人賃金くらべ",
+    slug: "kyujin-chingin",
+    tag: "地域と産業を選ぶ。求人票の平均を比べる。",
+    url: "https://kyujin-chingin.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
