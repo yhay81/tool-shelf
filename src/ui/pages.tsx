@@ -1062,6 +1062,18 @@ export const tools = [
     tag: "職種を選ぶ。求人と求職の釣り合いを並べる。",
     url: "https://shokugyo-bairitsu.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、73職種の賞与・通勤手当の明示状況を、2雇用区分、2023〜2025年度で探し、元の新規求人数とともに最大4職種で比べる。",
+    facts: ["厚生労働省公式統計・2,400値", "73職種・2条件を4職種比較"],
+    image: "https://shokugyo-joken.yhay81.com/og.svg",
+    imageAlt: "求人票に賞与と通勤手当の条件印を押し、職種カードを仕分ける職種求人条件",
+    name: "職種求人条件",
+    slug: "shokugyo-joken",
+    tag: "職種を選ぶ。賞与・通勤手当の割合を並べる。",
+    url: "https://shokugyo-joken.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
