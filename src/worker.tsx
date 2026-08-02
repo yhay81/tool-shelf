@@ -148,7 +148,7 @@ ${urls.map((url) => `  <url><loc>${url}</loc></url>`).join("\n")}
 </urlset>
 `;
 
-  c.header("Cache-Control", "public, max-age=3600, s-maxage=86400");
+  c.header("Cache-Control", "public, max-age=300, s-maxage=300");
   c.header("Content-Type", "application/xml; charset=UTF-8");
   return c.body(sitemap);
 });
