@@ -1038,6 +1038,18 @@ export const tools = [
     tag: "地域と年代を選ぶ。人数と構成比を並べる。",
     url: "https://kyushoku-nenrei.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、73職種の平均求人賃金を、全国・47労働局、2023〜2025年度、月給・時給、受理地・就業地から探し、最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・42,048セル", "73職種・4系列を4地域比較"],
+    image: "https://shokugyo-chingin.yhay81.com/og.svg",
+    imageAlt: "職種カードの引き出し、A〜Kの分類タブ、月給目盛りを並べた職種賃金くらべ",
+    name: "職種賃金くらべ",
+    slug: "shokugyo-chingin",
+    tag: "職種と地域を選ぶ。月給・時給の平均を並べる。",
+    url: "https://shokugyo-chingin.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
