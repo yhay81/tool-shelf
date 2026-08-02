@@ -1174,6 +1174,21 @@ export const tools = [
   },
 ] as const;
 
+const handpickedSlugs = new Set([
+  "album-relay",
+  "algo-lane",
+  "ava-rack",
+  "chair-call",
+  "creator-inbox",
+  "dice-seat",
+  "mimi-deck",
+  "peta-sheet",
+  "tango-orbit",
+  "chiiki-bairitsu",
+  "chiiki-shushoku",
+]);
+const handpickedTools = tools.filter((tool) => handpickedSlugs.has(tool.slug));
+
 export function HomePage() {
   const canonicalUrl = `${product.url}/`;
   const jsonLd = {
@@ -1208,6 +1223,30 @@ export function HomePage() {
             <p>画面と用途を見比べて、そのまま使えます。</p>
           </div>
         </header>
+
+        <section class="handpicked-shelf" aria-labelledby="handpicked-title">
+          <header>
+            <span aria-hidden="true">▤</span>
+            <h2 id="handpicked-title">ひとつ手に取る</h2>
+          </header>
+          <div class="handpicked-track">
+            {handpickedTools.map((tool, index) => (
+              <a data-shelf-pick={tool.slug} data-tool={tool.slug} href={tool.url}>
+                <img
+                  alt=""
+                  height="630"
+                  loading={index < 2 ? "eager" : "lazy"}
+                  src={tool.image}
+                  width="1200"
+                />
+                <span>
+                  <strong>{tool.name}</strong>
+                  <small>{tool.tag}</small>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
 
         <div class="shelf-controls">
           <label class="search-control">
