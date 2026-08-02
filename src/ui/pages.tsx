@@ -1135,6 +1135,18 @@ export const tools = [
     tag: "産業を選ぶ。休みと手当を条件別に並べる。",
     url: "https://sangyo-joken.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、全国・47労働局の職業計の有効求人倍率を、現行表の2023〜2025年度、3つの常用雇用区分で探し、元件数とともに最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・864元値", "48地域・3雇用区分を4地域比較"],
+    image: "https://chiiki-bairitsu.yhay81.com/og.svg",
+    imageAlt: "求人票と求職票が2本の線路から1倍の比率盤へ入る地域求人倍率",
+    name: "地域求人倍率",
+    slug: "chiiki-bairitsu",
+    tag: "地域を選ぶ。求人と求職の釣り合いを並べる。",
+    url: "https://chiiki-bairitsu.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
