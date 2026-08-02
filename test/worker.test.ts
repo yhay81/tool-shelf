@@ -121,8 +121,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="michi-no-eki"');
     expect(html).toContain('data-tool="kokuritsu-koen"');
     expect(html).toContain('data-tool="saitei-chingin"');
-    expect(html).toContain("85 TOOLS");
-    expect(html).toContain("85件");
+    expect(html).toContain('data-tool="kyujin-chingin"');
+    expect(html).toContain("86 TOOLS");
+    expect(html).toContain("86件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -179,7 +180,7 @@ describe("worker", () => {
     expect(html).toContain("議事ひろい");
     expect(html).toContain("法令引き");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":85');
+    expect(html).toContain('"numberOfItems":86');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -389,6 +390,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://saitei-chingin.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://kyujin-chingin.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -1444,6 +1448,28 @@ describe("worker", () => {
     expect(html).toContain("厚生労働省公式表・47都道府県");
   });
 
+  it("publishes the 求人賃金くらべ detail page with its job-board visual", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/kyujin-chingin",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain(
+      "<title>地域と産業を選ぶ。求人票の平均を比べる。 | 求人賃金くらべ | Tool Shelf</title>",
+    );
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/kyujin-chingin" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://kyujin-chingin.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://kyujin-chingin.yhay81.com"');
+    expect(html).toContain("厚生労働省公式統計・912組");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -1452,8 +1478,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=300");
-    expect(locations).toHaveLength(87);
-    expect(new Set(locations)).toHaveProperty("size", 87);
+    expect(locations).toHaveLength(88);
+    expect(new Set(locations)).toHaveProperty("size", 88);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1511,6 +1537,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/michi-no-eki");
     expect(locations).toContain("https://tools.yhay81.com/tools/kokuritsu-koen");
     expect(locations).toContain("https://tools.yhay81.com/tools/saitei-chingin");
+    expect(locations).toContain("https://tools.yhay81.com/tools/kyujin-chingin");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
