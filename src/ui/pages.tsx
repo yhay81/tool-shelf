@@ -953,6 +953,19 @@ export const tools = [
     tag: "駅を探す。14年を同じホームで比べる。",
     url: "https://eki-joko.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "国土交通省の全国1,231道の駅を、駅名・所在地・都道府県・登録年代から探し、気になる最大6駅を旅の停車札へまとめる。",
+    facts: ["国土交通省公式一覧・1,231駅", "2025年12月19日現在・停車札6駅"],
+    image: "https://michi-no-eki.yhay81.com/og.svg",
+    imageAlt:
+      "山あいの車道に道の駅標識と北海道・岐阜・長野の案内板、旅の停車札を並べた道の駅さがし",
+    name: "道の駅さがし",
+    slug: "michi-no-eki",
+    tag: "行き先を探す。旅の停車札を並べる。",
+    url: "https://michi-no-eki.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
