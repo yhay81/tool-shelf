@@ -1123,6 +1123,18 @@ export const tools = [
     tag: "職種を選ぶ。求人枠と就職確認の割合を並べる。",
     url: "https://shokugyo-jusoku.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、18産業の完全週休二日制・賞与・通勤手当を、現行分類の2024〜2025年度で探し、元件数とともに最大4産業で比べる。",
+    facts: ["厚生労働省公式統計・418元値", "18産業・3条件を4産業比較"],
+    image: "https://sangyo-joken.yhay81.com/og.svg",
+    imageAlt: "18産業の分類票から、休み・賞与・通勤手当の3枚の条件票を取り出す産業別求人条件",
+    name: "産業別求人条件",
+    slug: "sangyo-joken",
+    tag: "産業を選ぶ。休みと手当を条件別に並べる。",
+    url: "https://sangyo-joken.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
