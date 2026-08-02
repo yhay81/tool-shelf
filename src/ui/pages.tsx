@@ -916,6 +916,19 @@ export const tools = [
     tag: "地域を選ぶ。6桁がそろう。",
     url: "https://jichitai-code.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "日本標準職業分類415コードを、仕事内容・分類名・コードから探し、大・中・小分類の道筋と公式説明を最大4候補で比べる。",
+    facts: ["e-Stat公式分類・415コード", "説明と三段階を4候補まで比較"],
+    image: "https://shokugyo-code.yhay81.com/og.svg",
+    imageAlt:
+      "研究・事務・生産・輸送の働く人と、B・05・051の三段階の職業分類票を並べた職業分類引き",
+    name: "職業分類引き",
+    slug: "shokugyo-code",
+    tag: "することを探す。3桁へたどる。",
+    url: "https://shokugyo-code.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
