@@ -1174,19 +1174,7 @@ export const tools = [
   },
 ] as const;
 
-const handpickedSlugs = new Set([
-  "album-relay",
-  "algo-lane",
-  "ava-rack",
-  "chair-call",
-  "creator-inbox",
-  "dice-seat",
-  "mimi-deck",
-  "peta-sheet",
-  "tango-orbit",
-  "chiiki-bairitsu",
-  "chiiki-shushoku",
-]);
+const handpickedSlugs = new Set(["album-relay", "creator-inbox", "mimi-deck", "peta-sheet"]);
 const handpickedTools = tools.filter((tool) => handpickedSlugs.has(tool.slug));
 
 export function HomePage() {
