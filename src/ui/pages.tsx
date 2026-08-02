@@ -1050,6 +1050,18 @@ export const tools = [
     tag: "職種と地域を選ぶ。月給・時給の平均を並べる。",
     url: "https://shokugyo-chingin.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、73職種の有効求人数・有効求職者数と倍率を、全国・47労働局、3雇用区分、2023〜2025年度で探し、最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・31,536組", "73職種・3雇用区分を4地域比較"],
+    image: "https://shokugyo-bairitsu.yhay81.com/og.svg",
+    imageAlt: "求人票と求職票の束、中央の割り算、A〜Kの分類タブを並べた職種求人倍率",
+    name: "職種求人倍率",
+    slug: "shokugyo-bairitsu",
+    tag: "職種を選ぶ。求人と求職の釣り合いを並べる。",
+    url: "https://shokugyo-bairitsu.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
