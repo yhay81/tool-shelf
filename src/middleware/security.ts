@@ -12,6 +12,7 @@ const additionalImageOrigins = [
   "https://kibo-joken.yhay81.com",
   "https://shinki-bairitsu.yhay81.com",
   "https://shokugyo-jusoku.yhay81.com",
+  "https://sangyo-joken.yhay81.com",
 ];
 const csp = [
   "default-src 'self'",
