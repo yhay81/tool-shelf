@@ -1098,6 +1098,19 @@ export const tools = [
     tag: "会社の大きさを選ぶ。3つの条件を並べる。",
     url: "https://kibo-joken.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、73職種の新規求人数・新規求職申込件数と倍率を、全国・47労働局、3雇用区分、2023〜2025年度で探し、最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・31,536組", "73職種・3雇用区分を4地域比較"],
+    image: "https://shinki-bairitsu.yhay81.com/og.svg",
+    imageAlt:
+      "新規求人の箱と新規申込票が左右の搬入口から届き、中央の受付計器で倍率を示す職種新規求人倍率",
+    name: "職種新規求人倍率",
+    slug: "shinki-bairitsu",
+    tag: "職種と地域を選ぶ。新規求人と新規申込を並べる。",
+    url: "https://shinki-bairitsu.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
