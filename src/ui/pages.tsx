@@ -904,6 +904,18 @@ export const tools = [
     tag: "仕事をたどる。分類コードが決まる。",
     url: "https://sangyo-code.yhay81.com",
   },
+  {
+    categories: "find organize",
+    description:
+      "総務省の全国地方公共団体コード1,965件を、自治体名・カナ・5桁・6桁コードから探し、都道府県と団体種別で絞ってまとめてコピーする。",
+    facts: ["総務省公式一覧・1,965コード", "5桁本体と末尾の検査数字を分離"],
+    image: "https://jichitai-code.yhay81.com/og.svg",
+    imageAlt: "日本の地域ブロックと、5桁本体・検査数字を分けた6桁の自治体コード札",
+    name: "自治体コード引き",
+    slug: "jichitai-code",
+    tag: "地域を選ぶ。6桁がそろう。",
+    url: "https://jichitai-code.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
