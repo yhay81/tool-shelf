@@ -966,6 +966,18 @@ export const tools = [
     tag: "行き先を探す。旅の停車札を並べる。",
     url: "https://michi-no-eki.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "環境省の日本の35国立公園を、公園名・関係都道府県から探し、陸域面積と5つの地種区分を最大4公園で比べる。",
+    facts: ["環境省公式表・35国立公園", "2026年4月10日現在・5区分を4公園比較"],
+    image: "https://kokuritsu-koen.yhay81.com/og.svg",
+    imageAlt: "山の地層と、特別保護地区から普通地域まで5つの地種区分帯を並べた国立公園くらべ",
+    name: "国立公園くらべ",
+    slug: "kokuritsu-koen",
+    tag: "公園を選ぶ。守られ方を重ねる。",
+    url: "https://kokuritsu-koen.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
