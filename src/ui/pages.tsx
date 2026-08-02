@@ -1014,6 +1014,18 @@ export const tools = [
     tag: "産業を選ぶ。条件の割合を並べる。",
     url: "https://kyujin-joken.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、正社員求人が一般求人に占める割合と元件数を、全国・47労働局、2011〜2025年度、3指標で探し、最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・2,160組", "15年度・3指標を4地域比較"],
+    image: "https://seishain-kyujin.yhay81.com/og.svg",
+    imageAlt: "一般求人の内側に正社員求人を重ね、割合リングと15年推移を並べた正社員求人くらべ",
+    name: "正社員求人くらべ",
+    slug: "seishain-kyujin",
+    tag: "地域と年度を選ぶ。正社員の割合と元件数を並べる。",
+    url: "https://seishain-kyujin.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
