@@ -280,6 +280,7 @@ h1 {
 }
 
 .handpicked-track a {
+  position: relative;
   display: grid;
   min-width: 0;
   overflow: hidden;
@@ -293,6 +294,24 @@ h1 {
   transition:
     border-color 160ms ease,
     transform 160ms ease;
+}
+
+.handpicked-track a::after {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  content: "↗";
+  color: #203b31;
+  background: rgb(255 255 255 / 92%);
+  border: 1px solid rgb(32 59 49 / 18%);
+  border-radius: 50%;
+  box-shadow: 0 0.3rem 0.8rem rgb(39 35 25 / 10%);
+  font-size: 0.82rem;
+  font-weight: 850;
+  place-items: center;
 }
 
 .handpicked-track a:hover {

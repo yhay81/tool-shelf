@@ -1174,7 +1174,7 @@ export const tools = [
   },
 ] as const;
 
-const handpickedSlugs = new Set(["album-relay", "creator-inbox", "mimi-deck", "peta-sheet"]);
+const handpickedSlugs = new Set(["album-relay", "creator-inbox"]);
 const handpickedTools = tools.filter((tool) => handpickedSlugs.has(tool.slug));
 
 export function HomePage() {
