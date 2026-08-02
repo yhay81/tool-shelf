@@ -1086,6 +1086,18 @@ export const tools = [
     tag: "職種と地域を選ぶ。申込から就職確認までを並べる。",
     url: "https://shokugyo-shushoku.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、完全週休二日制、賞与、通勤手当の割合を、企業規模計と7つの従業員規模・2020〜2025年度で探し、最大4規模で比べる。",
+    facts: ["厚生労働省公式統計・3表8区分", "2020〜2025年度・3条件を個別比較"],
+    image: "https://kibo-joken.yhay81.com/og.svg",
+    imageAlt: "小さな建物から高層ビルへ、完全週休二日・賞与・通勤手当の標識を並べた規模別求人条件",
+    name: "規模別求人条件",
+    slug: "kibo-joken",
+    tag: "会社の大きさを選ぶ。3つの条件を並べる。",
+    url: "https://kibo-joken.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
