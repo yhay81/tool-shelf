@@ -118,8 +118,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="shokugyo-code"');
     expect(html).toContain('data-tool="chika-kohji"');
     expect(html).toContain('data-tool="eki-joko"');
-    expect(html).toContain("82 TOOLS");
-    expect(html).toContain("82件");
+    expect(html).toContain('data-tool="michi-no-eki"');
+    expect(html).toContain("83 TOOLS");
+    expect(html).toContain("83件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -176,7 +177,7 @@ describe("worker", () => {
     expect(html).toContain("議事ひろい");
     expect(html).toContain("法令引き");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":82');
+    expect(html).toContain('"numberOfItems":83');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -377,6 +378,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://eki-joko.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://michi-no-eki.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -1366,6 +1370,28 @@ describe("worker", () => {
     expect(html).toContain("国土交通省公式データ・7,739公表単位");
   });
 
+  it("publishes the 道の駅さがし detail page with its road-trip visual", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/michi-no-eki",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain(
+      "<title>行き先を探す。旅の停車札を並べる。 | 道の駅さがし | Tool Shelf</title>",
+    );
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/michi-no-eki" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://michi-no-eki.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://michi-no-eki.yhay81.com"');
+    expect(html).toContain("国土交通省公式一覧・1,231駅");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -1374,8 +1400,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=300");
-    expect(locations).toHaveLength(84);
-    expect(new Set(locations)).toHaveProperty("size", 84);
+    expect(locations).toHaveLength(85);
+    expect(new Set(locations)).toHaveProperty("size", 85);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1430,6 +1456,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/shokugyo-code");
     expect(locations).toContain("https://tools.yhay81.com/tools/chika-kohji");
     expect(locations).toContain("https://tools.yhay81.com/tools/eki-joko");
+    expect(locations).toContain("https://tools.yhay81.com/tools/michi-no-eki");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
