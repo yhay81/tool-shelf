@@ -1026,6 +1026,18 @@ export const tools = [
     tag: "地域と年度を選ぶ。正社員の割合と元件数を並べる。",
     url: "https://seishain-kyujin.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、ハローワーク求職者の11年代構成を、全国・47労働局、2011〜2025年度、就業形態・指標別に探し、最大4地域で比べる。",
+    facts: ["厚生労働省公式統計・31,104値", "11年代・3就業形態を4地域比較"],
+    image: "https://kyushoku-nenrei.yhay81.com/og.svg",
+    imageAlt: "11の年代別引き出し、構成帯、15年推移を並べた求職年齢くらべ",
+    name: "求職年齢くらべ",
+    slug: "kyushoku-nenrei",
+    tag: "地域と年代を選ぶ。人数と構成比を並べる。",
+    url: "https://kyushoku-nenrei.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
