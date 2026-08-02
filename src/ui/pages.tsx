@@ -978,6 +978,18 @@ export const tools = [
     tag: "公園を選ぶ。守られ方を重ねる。",
     url: "https://kokuritsu-koen.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の2025年度地域別最低賃金を、都道府県名・地域から探し、時間額、上げ幅、発効日と月間時間の参考額を最大4地域で比べる。",
+    facts: ["厚生労働省公式表・47都道府県", "2025年度版・時間額と発効日を4地域比較"],
+    image: "https://saitei-chingin.yhay81.com/og.svg",
+    imageAlt: "時計、タイムカード、時給目盛りを並べた最低賃金くらべ",
+    name: "最低賃金くらべ",
+    slug: "saitei-chingin",
+    tag: "地域を選ぶ。時給と発効日を並べる。",
+    url: "https://saitei-chingin.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
