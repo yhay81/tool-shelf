@@ -1002,6 +1002,18 @@ export const tools = [
     tag: "地域と産業を選ぶ。求人票の平均を比べる。",
     url: "https://kyujin-chingin.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、完全週休二日制、賞与、通勤手当の割合を19産業・2020〜2025年度で探し、最大4産業で比べる。",
+    facts: ["厚生労働省公式統計・3表19産業", "2020〜2025年度・3条件を個別比較"],
+    image: "https://kyujin-joken.yhay81.com/og.svg",
+    imageAlt: "求人掲示板に週休二日制・賞与・通勤手当の3枚の確認票を並べた求人条件くらべ",
+    name: "求人条件くらべ",
+    slug: "kyujin-joken",
+    tag: "産業を選ぶ。条件の割合を並べる。",
+    url: "https://kyujin-joken.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {

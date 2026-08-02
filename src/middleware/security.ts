@@ -1,6 +1,9 @@
 import { createMiddleware } from "hono/factory";
 
-const additionalImageOrigins = ["https://kyujin-chingin.yhay81.com"];
+const additionalImageOrigins = [
+  "https://kyujin-chingin.yhay81.com",
+  "https://kyujin-joken.yhay81.com",
+];
 const csp = [
   "default-src 'self'",
   "base-uri 'none'",
