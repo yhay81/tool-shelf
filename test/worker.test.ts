@@ -240,16 +240,25 @@ describe("worker", () => {
       "https://sky-dial.yusuke8h.workers.dev",
     );
     expect(response.headers.get("content-security-policy")).toContain(
-      "https://tango-orbit.yusuke8h.workers.dev",
+      "https://peta-sheet.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
-      "https://ava-rack.yusuke8h.workers.dev",
+      "https://mimi-deck.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
-      "https://chair-call.yusuke8h.workers.dev",
+      "https://algo-lane.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
-      "https://dice-seat.yusuke8h.workers.dev",
+      "https://tango-orbit.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://ava-rack.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://chair-call.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://dice-seat.yhay81.com",
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://yose-bloom.yhay81.com",
