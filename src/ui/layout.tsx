@@ -46,7 +46,7 @@ export function Layout({
         <meta content={canonicalUrl} property="og:url" />
         <meta content="summary_large_image" name="twitter:card" />
         <link href={canonicalUrl} rel="canonical" />
-        <link href="/styles.css" rel="stylesheet" />
+        <link href="/styles.css?v=20260802-handpicked-shelf" rel="stylesheet" />
         {serializedJsonLd ? (
           <script
             dangerouslySetInnerHTML={{ __html: serializedJsonLd }}
