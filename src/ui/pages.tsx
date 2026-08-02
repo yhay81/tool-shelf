@@ -1111,6 +1111,18 @@ export const tools = [
     tag: "職種と地域を選ぶ。新規求人と新規申込を並べる。",
     url: "https://shinki-bairitsu.yhay81.com",
   },
+  {
+    categories: "find compare",
+    description:
+      "厚生労働省の職業安定業務統計から、全国計73職種の公式充足率と、新規求人数・就職件数を、3雇用区分、2023〜2025年度で探し、最大4職種で比べる。",
+    facts: ["厚生労働省公式統計・657組", "73職種・3雇用区分を4職種比較"],
+    image: "https://shokugyo-jusoku.yhay81.com/og.svg",
+    imageAlt: "10個の求人枠へ就職確認済みの札が入り、元件数と充足率を示す職種充足率",
+    name: "職種充足率",
+    slug: "shokugyo-jusoku",
+    tag: "職種を選ぶ。求人枠と就職確認の割合を並べる。",
+    url: "https://shokugyo-jusoku.yhay81.com",
+  },
 ] as const;
 
 export function HomePage() {
