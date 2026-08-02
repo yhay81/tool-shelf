@@ -129,8 +129,9 @@ describe("worker", () => {
     expect(html).toContain('data-tool="shokugyo-bairitsu"');
     expect(html).toContain('data-tool="shokugyo-joken"');
     expect(html).toContain('data-tool="shokugyo-shushoku"');
-    expect(html).toContain("93 TOOLS");
-    expect(html).toContain("93件");
+    expect(html).toContain('data-tool="kibo-joken"');
+    expect(html).toContain("94 TOOLS");
+    expect(html).toContain("94件");
     expect(html).toContain("Profile Palette");
     expect(html).toContain("Mingle Frame");
     expect(html).toContain("Sky Dial");
@@ -187,7 +188,7 @@ describe("worker", () => {
     expect(html).toContain("議事ひろい");
     expect(html).toContain("法令引き");
     expect(html).toContain('"@type":"ItemList"');
-    expect(html).toContain('"numberOfItems":93');
+    expect(html).toContain('"numberOfItems":94');
     expect(html).toContain("https://tools.yhay81.com/tools/tegotae");
     expect(html).toContain("https://tools.yhay81.com/tools/otayori-maku");
     expect(html).toContain("https://tools.yhay81.com/tools/noriai-hyo");
@@ -421,6 +422,9 @@ describe("worker", () => {
     );
     expect(response.headers.get("content-security-policy")).toContain(
       "https://shokugyo-shushoku.yhay81.com",
+    );
+    expect(response.headers.get("content-security-policy")).toContain(
+      "https://kibo-joken.yhay81.com",
     );
     expect(html).not.toContain("data-template-surface");
     expect(html).not.toContain('class="hero"');
@@ -1652,6 +1656,28 @@ describe("worker", () => {
     expect(html).toContain("厚生労働省公式統計・31,536組");
   });
 
+  it("publishes the 規模別求人条件 detail page with its company skyline", async () => {
+    const response = await app.request(
+      "https://tools.yhay81.com/tools/kibo-joken",
+      undefined,
+      bindings,
+    );
+    const html = await response.text();
+
+    expect(response.status).toBe(200);
+    expect(html).toContain(
+      "<title>会社の大きさを選ぶ。3つの条件を並べる。 | 規模別求人条件 | Tool Shelf</title>",
+    );
+    expect(html).toContain(
+      '<link href="https://tools.yhay81.com/tools/kibo-joken" rel="canonical"/>',
+    );
+    expect(html).toContain(
+      '<meta content="https://kibo-joken.yhay81.com/og.svg" property="og:image"/>',
+    );
+    expect(html).toContain('href="https://kibo-joken.yhay81.com"');
+    expect(html).toContain("厚生労働省公式統計・3表8区分");
+  });
+
   it("publishes every focused tool page in the sitemap", async () => {
     const response = await app.request("https://tools.yhay81.com/sitemap.xml", undefined, bindings);
     const xml = await response.text();
@@ -1660,8 +1686,8 @@ describe("worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
     expect(response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=300");
-    expect(locations).toHaveLength(95);
-    expect(new Set(locations)).toHaveProperty("size", 95);
+    expect(locations).toHaveLength(96);
+    expect(new Set(locations)).toHaveProperty("size", 96);
     expect(locations).toContain("https://tools.yhay81.com/");
     expect(locations).toContain("https://tools.yhay81.com/privacy");
     expect(locations).toContain("https://tools.yhay81.com/tools/tegotae");
@@ -1727,6 +1753,7 @@ describe("worker", () => {
     expect(locations).toContain("https://tools.yhay81.com/tools/shokugyo-bairitsu");
     expect(locations).toContain("https://tools.yhay81.com/tools/shokugyo-joken");
     expect(locations).toContain("https://tools.yhay81.com/tools/shokugyo-shushoku");
+    expect(locations).toContain("https://tools.yhay81.com/tools/kibo-joken");
   });
 
   it("does not turn an unknown tool slug into an indexable page", async () => {
