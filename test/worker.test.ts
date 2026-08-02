@@ -1347,7 +1347,7 @@ describe("worker", () => {
 
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toContain("application/xml");
-    expect(response.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=86400");
+    expect(response.headers.get("cache-control")).toBe("public, max-age=300, s-maxage=300");
     expect(locations).toHaveLength(83);
     expect(new Set(locations)).toHaveProperty("size", 83);
     expect(locations).toContain("https://tools.yhay81.com/");
