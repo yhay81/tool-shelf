@@ -4,6 +4,14 @@
 
 - 文章中心のサービス紹介一覧ではなく、実際の画面を主役にしたカード棚にする
 - Tool Shelfは置換サービス100本へ数えず、共通の発見・送客面として扱う
+
+## 2026-08-03: 価値の薄い10サービスを棚から外す
+
+- 公開一覧を100本から90本へ絞る
+- 実登録0の`album-relay`、`creator-inbox`を外す
+- 訪問後の検索・選択・比較がなく、既存の求人統計ツールと重複する`seishain-kyujin`、`shokugyo-joken`、`shokugyo-shushoku`、`shinki-bairitsu`、`shokugyo-jusoku`、`chiiki-bairitsu`、`chiiki-shinki-bairitsu`、`chiiki-shushoku`を外す
+- 復元可能性を残すためGitHubソースとD1は削除せず、公開Worker、サブドメイン、Tool Shelfの掲載だけを停止する
+- 許可イベントと画像CSPは公開中の一覧から導出し、停止済みサービスを送客・読込対象に戻さない
 - 検索語と絞り込みは端末内だけで処理する
 - Better Authは所有者アカウントが不要なため採用しない
 - 外部解析SDKを使わず、匿名の訪問・再訪・送客だけをD1へ35日保存する

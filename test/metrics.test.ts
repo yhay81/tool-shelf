@@ -11,11 +11,17 @@ describe("tool metrics coverage", () => {
   it("builds scalable outbound aggregation for every published tool", () => {
     const slugs = [...pages.matchAll(/slug: "([a-z0-9-]+)"/g)].map((match) => match[1]);
 
+    const retired = [...pages.matchAll(/^  "([a-z0-9-]+)",$/gm)].map((match) => match[1]);
+
     expect(slugs).toHaveLength(100);
+    expect(retired).toHaveLength(10);
+    expect(slugs.length - retired.length).toBe(90);
     expect(metricsSql).toContain("AS outbound_users_7d");
     expect(toolMetricsSql).toContain("GROUP BY tool");
     expect(toolMetricsSql).toContain("COUNT(DISTINCT session_id) AS users");
     expect(metricsScript).toContain("$PublishedSlugs = [regex]::Matches");
+    expect(metricsScript).toContain("$RetiredSlugs");
+    expect(metricsScript).toContain("Where-Object { $_ -notin $RetiredSlugs }");
     expect(metricsScript).toContain('$MetricName = $Slug.Replace("-", "_")');
     expect(metricsScript).toContain("$Tools[$MetricName]");
   });
