@@ -31,7 +31,11 @@ if (-not $Row) {
 
 $ToolRows = @($ToolPayload[0].results)
 $PublishedSource = Get-Content -Raw -LiteralPath $PagesPath
-$PublishedSlugs = [regex]::Matches($PublishedSource, 'slug: "([a-z0-9-]+)"') | ForEach-Object { $_.Groups[1].Value }
+$RetiredBlock = [regex]::Match($PublishedSource, 'retiredToolSlugs = new Set\(\[(?<slugs>[\s\S]*?)\]\)')
+$RetiredSlugs = [regex]::Matches($RetiredBlock.Groups["slugs"].Value, '"([a-z0-9-]+)"') | ForEach-Object { $_.Groups[1].Value }
+$PublishedSlugs = [regex]::Matches($PublishedSource, 'slug: "([a-z0-9-]+)"') |
+    ForEach-Object { $_.Groups[1].Value } |
+    Where-Object { $_ -notin $RetiredSlugs }
 $Tools = [ordered]@{}
 foreach ($Slug in $PublishedSlugs) {
     $MetricName = $Slug.Replace("-", "_")

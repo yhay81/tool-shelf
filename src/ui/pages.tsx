@@ -1,7 +1,7 @@
 import { product } from "../config/product";
 import { Layout } from "./layout";
 
-export const tools = [
+const allTools = [
   {
     categories: "share",
     description: "撮影会や小さなイベントの写真を、QRと合い言葉でまとめて渡す。",
@@ -1174,7 +1174,22 @@ export const tools = [
   },
 ] as const;
 
-const handpickedSlugs = new Set(["album-relay", "creator-inbox"]);
+export const retiredToolSlugs = new Set([
+  "album-relay",
+  "creator-inbox",
+  "seishain-kyujin",
+  "shokugyo-joken",
+  "shokugyo-shushoku",
+  "shinki-bairitsu",
+  "shokugyo-jusoku",
+  "chiiki-bairitsu",
+  "chiiki-shinki-bairitsu",
+  "chiiki-shushoku",
+]);
+
+export const tools = allTools.filter((tool) => !retiredToolSlugs.has(tool.slug));
+
+const handpickedSlugs = new Set(["peta-sheet", "shokugyo-chingin"]);
 const handpickedTools = tools.filter((tool) => handpickedSlugs.has(tool.slug));
 
 export function HomePage() {
